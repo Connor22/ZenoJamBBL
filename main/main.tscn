@@ -1,0 +1,35 @@
+[gd_scene load_steps=9 format=3 uid="uid://4u7tuoc2q60t"]
+
+[ext_resource type="Script" path="res://main/main.gd" id="1_5q6hk"]
+[ext_resource type="Script" path="res://game_state/game_state_machine.gd" id="2_y47cf"]
+[ext_resource type="Script" path="res://game_state/main_menu_state.gd" id="3_wqg48"]
+[ext_resource type="Script" path="res://game_state/gameplay_state.gd" id="4_640tu"]
+[ext_resource type="PackedScene" uid="uid://b7dxgoy5qreyo" path="res://state_scenes/main_menu/main_menu.tscn" id="4_kk008"]
+[ext_resource type="PackedScene" uid="uid://cj6el6eihauos" path="res://state_scenes/gameplay/gameplay.tscn" id="6_8aj7y"]
+[ext_resource type="Script" path="res://game_state/pause_menu_state.gd" id="7_p7pvm"]
+[ext_resource type="PackedScene" uid="uid://c16iboen3s6lh" path="res://state_scenes/pause_menu/pause_menu.tscn" id="8_ggu2m"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_5q6hk")
+
+[node name="SoundManager(Example)" type="Node" parent="."]
+
+[node name="SaveManager(Example)" type="Node" parent="."]
+
+[node name="DataManager(Example)" type="Node" parent="."]
+
+[node name="GameStateMachine" type="Node" parent="."]
+script = ExtResource("2_y47cf")
+initial_state = NodePath("MainMenuState")
+
+[node name="MainMenuState" type="Node" parent="GameStateMachine"]
+script = ExtResource("3_wqg48")
+state_scene = ExtResource("4_kk008")
+
+[node name="GameplayState" type="Node" parent="GameStateMachine"]
+script = ExtResource("4_640tu")
+state_scene = ExtResource("6_8aj7y")
+
+[node name="PauseMenuState" type="Node" parent="GameStateMachine"]
+script = ExtResource("7_p7pvm")
+state_scene = ExtResource("8_ggu2m")
