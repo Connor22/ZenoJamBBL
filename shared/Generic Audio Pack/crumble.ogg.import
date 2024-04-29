@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cldle6sdqc0xt"
+path="res://.godot/imported/crumble.ogg-d8ea1245231062fcf43916b8f0a20bbf.oggvorbisstr"
+
+[deps]
+
+source_file="res://shared/Generic Audio Pack/crumble.ogg"
+dest_files=["res://.godot/imported/crumble.ogg-d8ea1245231062fcf43916b8f0a20bbf.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

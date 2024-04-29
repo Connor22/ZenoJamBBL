@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cj6el6eihauos"]
 
 [ext_resource type="Script" path="res://state_scenes/gameplay/gameplay.gd" id="1_heyo6"]
-[ext_resource type="Texture2D" uid="uid://ou7e14x7dt0w" path="res://icon.svg" id="2_jlbcs"]
+[ext_resource type="PackedScene" uid="uid://mwx7hdtetol8" path="res://player/Player.tscn" id="2_tnmc1"]
 
 [node name="Gameplay" type="Node"]
 script = ExtResource("1_heyo6")
@@ -12,16 +12,8 @@ follow_viewport_enabled = true
 [node name="PlayerManager" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
-[node name="Temp" type="Sprite2D" parent="PlayerManager"]
-position = Vector2(575, 309)
-texture = ExtResource("2_jlbcs")
-
-[node name="Temp2" type="Label" parent="PlayerManager"]
-offset_left = 516.0
-offset_top = 378.0
-offset_right = 639.0
-offset_bottom = 412.0
-text = "whoo gameplay"
+[node name="Player" parent="PlayerManager" instance=ExtResource("2_tnmc1")]
+position = Vector2(588, 336)
 
 [node name="HUDManager" type="CanvasLayer" parent="."]
 layer = 2

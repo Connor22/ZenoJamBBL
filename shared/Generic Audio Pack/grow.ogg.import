@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://by0bd2kbl7shh"
+path="res://.godot/imported/grow.ogg-04c8a81b90cd58b1610e807d47ce6087.oggvorbisstr"
+
+[deps]
+
+source_file="res://shared/Generic Audio Pack/grow.ogg"
+dest_files=["res://.godot/imported/grow.ogg-04c8a81b90cd58b1610e807d47ce6087.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

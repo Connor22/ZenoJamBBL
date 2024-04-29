@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bm81mah8gy6tm"]
+[gd_scene load_steps=4 format=3 uid="uid://cp5krlfwiwh0f"]
 
-[ext_resource type="Texture2D" uid="uid://dsar1qy7tbcxw" path="res://Node2D.svg" id="1_gh0v8"]
-[ext_resource type="Texture2D" uid="uid://ou7e14x7dt0w" path="res://icon.svg" id="1_regjh"]
-[ext_resource type="Script" path="res://addons/FollowParent/FollowParent2D/FollowParent2D.gd" id="2_k6p5k"]
+[ext_resource type="Script" path="res://addons/FollowParent/FollowParent2D/FollowParent2D.gd" id="1_0f6v4"]
+[ext_resource type="Texture2D" uid="uid://ou7e14x7dt0w" path="res://shared/icon.svg" id="1_regjh"]
 
 [sub_resource type="GDScript" id="GDScript_l4k81"]
 resource_name = "Demo"
@@ -22,12 +21,11 @@ position = Vector2(581, 356)
 script = SubResource("GDScript_l4k81")
 
 [node name="Node2d" type="Sprite2D" parent="Player"]
-texture = ExtResource("1_gh0v8")
 
 [node name="FollowParent2D" type="Node2D" parent="Player"]
 top_level = true
 position = Vector2(581, 356)
-script = ExtResource("2_k6p5k")
+script = ExtResource("1_0f6v4")
 lerp_speed = 5.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Player/FollowParent2D"]

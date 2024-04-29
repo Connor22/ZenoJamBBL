@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ci473mkypyn8h"
+path="res://.godot/imported/impact_stabby.ogg-f1af5bd8d1fd5d40259317f6bcd38ecf.oggvorbisstr"
+
+[deps]
+
+source_file="res://shared/Generic Audio Pack/impact_stabby.ogg"
+dest_files=["res://.godot/imported/impact_stabby.ogg-f1af5bd8d1fd5d40259317f6bcd38ecf.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

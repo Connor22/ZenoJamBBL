@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://clg0dbb0ybwbo"
+path="res://.godot/imported/impact_generic_light_000.ogg-203d9e546ad9a96db4a7e4ff86ddc500.oggvorbisstr"
+
+[deps]
+
+source_file="res://shared/kenney impact sounds/impact_generic_light_000.ogg"
+dest_files=["res://.godot/imported/impact_generic_light_000.ogg-203d9e546ad9a96db4a7e4ff86ddc500.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

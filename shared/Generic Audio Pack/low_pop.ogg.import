@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://61i1p5gkojhe"
+path="res://.godot/imported/low_pop.ogg-64368123dfbda3cd2d47bff6ad49bdc3.oggvorbisstr"
+
+[deps]
+
+source_file="res://shared/Generic Audio Pack/low_pop.ogg"
+dest_files=["res://.godot/imported/low_pop.ogg-64368123dfbda3cd2d47bff6ad49bdc3.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

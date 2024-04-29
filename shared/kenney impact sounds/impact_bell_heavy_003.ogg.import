@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://xrrjuu2fyjuu"
+path="res://.godot/imported/impact_bell_heavy_003.ogg-ff82ceedb53dc787321ee9a120951132.oggvorbisstr"
+
+[deps]
+
+source_file="res://shared/kenney impact sounds/impact_bell_heavy_003.ogg"
+dest_files=["res://.godot/imported/impact_bell_heavy_003.ogg-ff82ceedb53dc787321ee9a120951132.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

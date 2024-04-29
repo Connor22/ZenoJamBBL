@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cngkanymbico2"
+path="res://.godot/imported/upwards_bounce.ogg-29afc9b5eeeb38b9ea9ac37f4c2093ec.oggvorbisstr"
+
+[deps]
+
+source_file="res://shared/Generic Audio Pack/upwards_bounce.ogg"
+dest_files=["res://.godot/imported/upwards_bounce.ogg-29afc9b5eeeb38b9ea9ac37f4c2093ec.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

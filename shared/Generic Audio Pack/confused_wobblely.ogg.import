@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://oy7eicfep2rv"
+path="res://.godot/imported/confused_wobblely.ogg-704b0222bbce8828c9b0958e5337c77e.oggvorbisstr"
+
+[deps]
+
+source_file="res://shared/Generic Audio Pack/confused_wobblely.ogg"
+dest_files=["res://.godot/imported/confused_wobblely.ogg-704b0222bbce8828c9b0958e5337c77e.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

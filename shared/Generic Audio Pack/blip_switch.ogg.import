@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c70yje1j087ta"
+path="res://.godot/imported/blip_switch.ogg-b72ec77172d9ebeabb5ce498728c8b81.oggvorbisstr"
+
+[deps]
+
+source_file="res://shared/Generic Audio Pack/blip_switch.ogg"
+dest_files=["res://.godot/imported/blip_switch.ogg-b72ec77172d9ebeabb5ce498728c8b81.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

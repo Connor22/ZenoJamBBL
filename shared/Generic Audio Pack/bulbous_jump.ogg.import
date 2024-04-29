@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b77frsn2uo42t"
+path="res://.godot/imported/bulbous_jump.ogg-07dde0155c62a69e510379bff58b688d.oggvorbisstr"
+
+[deps]
+
+source_file="res://shared/Generic Audio Pack/bulbous_jump.ogg"
+dest_files=["res://.godot/imported/bulbous_jump.ogg-07dde0155c62a69e510379bff58b688d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
