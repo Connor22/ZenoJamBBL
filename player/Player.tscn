@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://ou7e14x7dt0w" path="res://shared/icon.svg" id="2_g23kb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jheaw"]
-radius = 19.0
-height = 44.0
+radius = 17.0
+height = 36.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r5cq3"]
-radius = 39.6232
+radius = 27.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -18,14 +18,14 @@ script = ExtResource("1_fn4jj")
 
 [node name="Body Temp" type="Sprite2D" parent="Pivot"]
 modulate = Color(0, 0, 2.703, 1)
-position = Vector2(0, -4)
-scale = Vector2(0.359375, 0.40625)
+position = Vector2(0, -1.5)
+scale = Vector2(0.277344, 0.313519)
 texture = ExtResource("2_g23kb")
 
 [node name="Head Temp" type="Sprite2D" parent="Pivot"]
 modulate = Color(6.487, 3.243, 2.163, 1)
-position = Vector2(0, -35)
-scale = Vector2(0.234375, 0.234375)
+position = Vector2(0, -30)
+scale = Vector2(0.171875, 0.171875)
 texture = ExtResource("2_g23kb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

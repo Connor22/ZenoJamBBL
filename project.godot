@@ -15,6 +15,12 @@ run/main_scene="res://state_scenes/gameplay/gameplay.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://shared/icon.svg"
 
+[display]
+
+window/size/viewport_width=800
+window/size/viewport_height=800
+window/stretch/mode="canvas_items"
+
 [input]
 
 move_up={

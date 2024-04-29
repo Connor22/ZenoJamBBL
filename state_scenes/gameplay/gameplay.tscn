@@ -13,7 +13,7 @@ follow_viewport_enabled = true
 follow_viewport_enabled = true
 
 [node name="Player" parent="PlayerManager" instance=ExtResource("2_tnmc1")]
-position = Vector2(588, 336)
+position = Vector2(400, 400)
 
 [node name="HUDManager" type="CanvasLayer" parent="."]
 layer = 2
