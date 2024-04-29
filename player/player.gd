@@ -3,6 +3,8 @@ extends CharacterBody2D
 
 const SPEED = 250.0
 const SHIELD_BASH_SPEED = 1200
+const REFLECT_IMPULSE = 800
+
 var _shield_bash_direction = Vector2.ZERO
 
 func _ready():
@@ -17,7 +19,6 @@ func _physics_process(delta):
 		$ImpactShape.monitorable = true
 		$ImpactShape.visible = true
 		_shield_bash_direction = (get_global_mouse_position() - position).normalized()
-		$Pivot.modulate = Color(1000,1000,1000)
 		velocity = _shield_bash_direction * SHIELD_BASH_SPEED
 		$ShieldBashTimer.start()
 	else:
@@ -27,6 +28,11 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _on_shield_bash_timer_timeout():
-	$Pivot.modulate = Color(1, 1, 1)
 	$ImpactShape.monitorable = false
 	$ImpactShape.visible = false
+
+func _reflect_the_object(reflect_object):
+	var reflect_object_pos = reflect_object.position as Vector2
+	var impact_shape_pos = $ImpactShape.position as Vector2
+	var direction = (reflect_object_pos - impact_shape_pos).normalized()
+	reflect_object.velocity = direction * REFLECT_IMPULSE

@@ -59,3 +59,7 @@ shield_bash={
 2d_physics/layer_1="world"
 2d_physics/layer_2="player"
 2d_physics/layer_3="impact"
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0.227711, 0.282393, 0.353237, 1)
