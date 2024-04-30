@@ -7,26 +7,28 @@
 [ext_resource type="Script" path="res://player/player_state/idle_player_state.gd" id="3_02xhs"]
 [ext_resource type="Script" path="res://player/player_state/shield_player_state.gd" id="5_5ka5h"]
 [ext_resource type="Script" path="res://player/aiming_player_state.gd" id="5_yi7xr"]
+[ext_resource type="Script" path="res://player/impacted_player_state.gd" id="7_q13bo"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jheaw"]
 radius = 17.0
 height = 36.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_r5cq3"]
-radius = 27.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ingjy"]
+radius = 17.5
+height = 46.0
 
 [sub_resource type="Animation" id="Animation_p78ai"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ImpactShape:monitoring")
+tracks/0/path = NodePath("ImpactShape:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [false]
 }
 tracks/1/type = "value"
@@ -38,13 +40,13 @@ tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("ImpactShape:visible")
+tracks/2/path = NodePath("AimerPivot:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -52,65 +54,11 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("AimerPivot:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_oek7j"]
-resource_name = "shield_ability"
-length = 0.05
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ImpactShape:monitoring")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ImpactShape:monitorable")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.05),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("ImpactShape:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.05),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f08og"]
 _data = {
-"RESET": SubResource("Animation_p78ai"),
-"shield_ability": SubResource("Animation_oek7j")
+"RESET": SubResource("Animation_p78ai")
 }
 
 [node name="Player" type="CharacterBody2D"]
@@ -132,6 +80,13 @@ script = ExtResource("5_yi7xr")
 
 [node name="ShieldPlayerState" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("5_5ka5h")
+
+[node name="ImpactShapeLingerTimer" type="Timer" parent="PlayerStateMachine/ShieldPlayerState"]
+wait_time = 0.1
+one_shot = true
+
+[node name="ImpactedPlayerState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("7_q13bo")
 
 [node name="AimerPivot" type="Node2D" parent="."]
 visible = false
@@ -170,12 +125,12 @@ shape = SubResource("CapsuleShape2D_jheaw")
 [node name="ImpactShape" type="Area2D" parent="."]
 visible = false
 collision_layer = 4
-collision_mask = 0
-monitoring = false
+collision_mask = 4
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ImpactShape"]
-shape = SubResource("CircleShape2D_r5cq3")
+position = Vector2(17.5, 0)
+shape = SubResource("CapsuleShape2D_ingjy")
 debug_color = Color(0.970114, 0, 0.456887, 0.42)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -183,3 +138,5 @@ libraries = {
 "": SubResource("AnimationLibrary_f08og")
 }
 autoplay = "RESET"
+
+[connection signal="timeout" from="PlayerStateMachine/ShieldPlayerState/ImpactShapeLingerTimer" to="PlayerStateMachine/ShieldPlayerState" method="_on_impact_shape_linger_timer_timeout"]

@@ -1,14 +1,16 @@
 class_name Player
 extends CharacterBody2D
+## Contains values and reuseble functionality for the player.
+
 @export var walking_max_speed = 250
 @export var walking_acceleration = 5000
 @export var walking_friction = 2000
 @export var sheild_max_speed = 2000
 @export var sheild_friction = 14000
 @export var reflect_impulse = 800
-@export var push_impulse = 50
+@export var rebound_impulse = 400
 var shield_direction := Vector2.ZERO
-@onready var animations = $AnimationPlayer
+@onready var animations = $AnimationPlayer as AnimationPlayer
 
 # Reuseble functionality to avoid duplicate code in player states
 func smooth_player_movement(delta: float, multi: float = 1):

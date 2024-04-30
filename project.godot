@@ -58,7 +58,8 @@ aim_ability={
 
 2d_physics/layer_1="world"
 2d_physics/layer_2="player"
-2d_physics/layer_3="impact"
+2d_physics/layer_3="impact_player"
+2d_physics/layer_4="impact_enemy"
 
 [rendering]
 
