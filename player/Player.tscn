@@ -1,7 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://mwx7hdtetol8"]
+[gd_scene load_steps=13 format=3 uid="uid://mwx7hdtetol8"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_fn4jj"]
 [ext_resource type="Texture2D" uid="uid://ou7e14x7dt0w" path="res://shared/icon.svg" id="2_g23kb"]
+[ext_resource type="Script" path="res://player/player_state/player_state_machine.gd" id="2_p6hic"]
+[ext_resource type="Script" path="res://player/player_state/walking_player_state.gd" id="3_02v2g"]
+[ext_resource type="Script" path="res://player/player_state/idle_player_state.gd" id="3_02xhs"]
+[ext_resource type="Script" path="res://player/player_state/shield_player_state.gd" id="5_5ka5h"]
+[ext_resource type="Script" path="res://player/aiming_player_state.gd" id="5_yi7xr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jheaw"]
 radius = 17.0
@@ -10,35 +15,171 @@ height = 36.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_r5cq3"]
 radius = 27.0
 
+[sub_resource type="Animation" id="Animation_p78ai"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ImpactShape:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ImpactShape:monitorable")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ImpactShape:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AimerPivot:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_oek7j"]
+resource_name = "shield_ability"
+length = 0.05
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ImpactShape:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ImpactShape:monitorable")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ImpactShape:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f08og"]
+_data = {
+"RESET": SubResource("Animation_p78ai"),
+"shield_ability": SubResource("Animation_oek7j")
+}
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_fn4jj")
 
-[node name="Pivot" type="Node2D" parent="."]
+[node name="PlayerStateMachine" type="Node" parent="."]
+script = ExtResource("2_p6hic")
+initial_state = NodePath("IdlePlayerState")
 
-[node name="Body Temp" type="Sprite2D" parent="Pivot"]
+[node name="IdlePlayerState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("3_02xhs")
+
+[node name="WalkingPlayerState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("3_02v2g")
+
+[node name="AimingPlayerState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("5_yi7xr")
+
+[node name="ShieldPlayerState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("5_5ka5h")
+
+[node name="AimerPivot" type="Node2D" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="AimerPivot"]
+offset_top = -1.0
+offset_right = 131.0
+offset_bottom = 1.0
+
+[node name="SpritePivot" type="Node2D" parent="."]
+
+[node name="BodyTemp" type="Sprite2D" parent="SpritePivot"]
 modulate = Color(0, 0, 2.703, 1)
 position = Vector2(0, -1.5)
 scale = Vector2(0.277344, 0.313519)
 texture = ExtResource("2_g23kb")
 
-[node name="Head Temp" type="Sprite2D" parent="Pivot"]
+[node name="HeadTemp" type="Sprite2D" parent="SpritePivot"]
 modulate = Color(6.487, 3.243, 2.163, 1)
 position = Vector2(0, -30)
 scale = Vector2(0.171875, 0.171875)
 texture = ExtResource("2_g23kb")
 
+[node name="StateTemp" type="Label" parent="SpritePivot"]
+texture_filter = 1
+offset_left = -78.0
+offset_top = -62.0
+offset_right = 78.0
+offset_bottom = -39.0
+text = "???"
+horizontal_alignment = 1
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_jheaw")
 
-[node name="ShieldBashTimer" type="Timer" parent="."]
-wait_time = 0.05
-one_shot = true
-
 [node name="ImpactShape" type="Area2D" parent="."]
+visible = false
 collision_layer = 4
 collision_mask = 0
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ImpactShape"]
 shape = SubResource("CircleShape2D_r5cq3")
 debug_color = Color(0.970114, 0, 0.456887, 0.42)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_f08og")
+}
+autoplay = "RESET"
