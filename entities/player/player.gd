@@ -1,38 +1,32 @@
 class_name Player
 extends CharacterBody2D
+## Contains values and reuseble functionality for the player.
 
-const SPEED = 250.0
-const SHIELD_BASH_SPEED = 1200
-const REFLECT_IMPULSE = 800
+@export var walking_max_speed = 250
+@export var walking_acceleration = 5000
+@export var walking_friction = 2000
+@export var sheild_max_speed = 2000
+@export var sheild_friction = 14000
+@export var reflect_impulse = 800
+@export var rebound_impulse = 400
+var shield_direction := Vector2.ZERO
+@onready var animations = $AnimationPlayer as AnimationPlayer
 
-var _shield_bash_direction = Vector2.ZERO
-
-func _ready():
-	$ImpactShape.monitorable = false
-	$ImpactShape.visible = false
-	!$ShieldBashTimer.timeout.connect(_on_shield_bash_timer_timeout)
-
-func _physics_process(delta):
-	if !$ShieldBashTimer.is_stopped():
-		velocity = _shield_bash_direction * SHIELD_BASH_SPEED
-	elif Input.is_action_just_pressed("shield_bash"):
-		$ImpactShape.monitorable = true
-		$ImpactShape.visible = true
-		_shield_bash_direction = (get_global_mouse_position() - position).normalized()
-		velocity = _shield_bash_direction * SHIELD_BASH_SPEED
-		$ShieldBashTimer.start()
-	else:
-		# Get the input direction and handle the movement
-		var direction = Input.get_vector("move_left","move_right","move_up","move_down").normalized()
-		velocity = direction * SPEED
+# Reuseble functionality to avoid duplicate code in player states
+func smooth_player_movement(delta: float, multi: float = 1):
+	# Get the input direction and handle the movement
+	var direction = Input.get_vector("move_left","move_right","move_up","move_down").normalized()
+	match [direction]:
+		[Vector2.ZERO] when velocity.length() > (walking_friction * delta * multi):
+			velocity -= velocity.normalized() * (walking_friction * delta * multi)
+		[Vector2.ZERO]:
+			velocity = Vector2.ZERO
+		_:
+			velocity += (direction * walking_acceleration * delta * multi)
+			velocity = velocity.limit_length(walking_max_speed * multi)
 	move_and_slide()
 
-func _on_shield_bash_timer_timeout():
-	$ImpactShape.monitorable = false
-	$ImpactShape.visible = false
-
-func _reflect_the_object(reflect_object):
-	var reflect_object_pos = reflect_object.position as Vector2
-	var impact_shape_pos = $ImpactShape.position as Vector2
-	var direction = (reflect_object_pos - impact_shape_pos).normalized()
-	reflect_object.velocity = direction * REFLECT_IMPULSE
+func wants_to_move() -> bool:
+	return Input.is_action_pressed("move_up") or Input.is_action_pressed("move_down")\
+	or Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right")
+# ----------------------------------------------------------------
