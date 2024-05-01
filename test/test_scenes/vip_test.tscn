@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://bvm16qn1aix71"]
+
+[ext_resource type="Script" path="res://test/test_scenes/vip_test.gd" id="1_3q5vt"]
+[ext_resource type="Texture2D" uid="uid://ddsatg2ofgwwi" path="res://assets/Godot Logos/svg/icon_color.svg" id="1_cjpq6"]
+[ext_resource type="PackedScene" uid="uid://55dyjvvtj12w" path="res://entities/vip/vip.tscn" id="1_nb7n8"]
+
+[sub_resource type="Curve2D" id="Curve2D_bth85"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -105.733, 187.233, 0, 0, 0, 0, 344.955, 612.398, 0, 0, 0, 0, 1151.67, 323.563)
+}
+point_count = 3
+
+[sub_resource type="LabelSettings" id="LabelSettings_oobv6"]
+font_size = 100
+
+[node name="VipTest" type="Node2D" node_paths=PackedStringArray("KeyPressLabel")]
+script = ExtResource("1_3q5vt")
+KeyPressLabel = NodePath("KeyPressLabel")
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(123.378, 32.9412)
+scale = Vector2(0.485924, 0.865546)
+curve = SubResource("Curve2D_bth85")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-105.733, 187.233)
+rotation = 0.756266
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_cjpq6")
+
+[node name="Vip" parent="." node_paths=PackedStringArray("target") instance=ExtResource("1_nb7n8")]
+position = Vector2(294, 173)
+gravity_scale = 0.0
+move_tolerance = 200.0
+path_speed = 7700
+SPEED = 60.0
+target = NodePath("../Path2D/PathFollow2D")
+clr = Color(1, 0, 0, 1)
+debug = true
+
+[node name="KeyPressLabel" type="Label" parent="."]
+visible = false
+offset_left = 121.0
+offset_top = 12.0
+offset_right = 1036.0
+offset_bottom = 129.0
+text = "Space Pressed"
+label_settings = SubResource("LabelSettings_oobv6")
+horizontal_alignment = 1
+uppercase = true

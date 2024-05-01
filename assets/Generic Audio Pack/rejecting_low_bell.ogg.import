@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://71dng64815t2"
+path="res://.godot/imported/rejecting_low_bell.ogg-6d35fbf870d60189a2220262000ab114.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Generic Audio Pack/rejecting_low_bell.ogg"
+dest_files=["res://.godot/imported/rejecting_low_bell.ogg-6d35fbf870d60189a2220262000ab114.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

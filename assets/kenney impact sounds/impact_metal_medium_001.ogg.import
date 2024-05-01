@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bce327q5oidkj"
+path="res://.godot/imported/impact_metal_medium_001.ogg-66d80d7b20ea95655d3a4f56934a4490.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/kenney impact sounds/impact_metal_medium_001.ogg"
+dest_files=["res://.godot/imported/impact_metal_medium_001.ogg-66d80d7b20ea95655d3a4f56934a4490.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

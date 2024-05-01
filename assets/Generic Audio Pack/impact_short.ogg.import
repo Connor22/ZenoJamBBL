@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b8ctrq0phd17d"
+path="res://.godot/imported/impact_short.ogg-159ea41254225d6516d177f8f4e72b44.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Generic Audio Pack/impact_short.ogg"
+dest_files=["res://.godot/imported/impact_short.ogg-159ea41254225d6516d177f8f4e72b44.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

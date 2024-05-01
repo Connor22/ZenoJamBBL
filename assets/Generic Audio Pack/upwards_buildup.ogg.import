@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://betsirm74dfj8"
+path="res://.godot/imported/upwards_buildup.ogg-92201a4f84072f0dfcf76fa92bd6b237.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Generic Audio Pack/upwards_buildup.ogg"
+dest_files=["res://.godot/imported/upwards_buildup.ogg-92201a4f84072f0dfcf76fa92bd6b237.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

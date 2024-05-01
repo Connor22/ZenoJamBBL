@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cuoeskr5xffyq"
+path="res://.godot/imported/leading_tone.ogg-27bd488d32b13da545cf4619479e9b11.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Generic Audio Pack/leading_tone.ogg"
+dest_files=["res://.godot/imported/leading_tone.ogg-27bd488d32b13da545cf4619479e9b11.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

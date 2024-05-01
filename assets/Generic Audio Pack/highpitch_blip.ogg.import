@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dve7d6sdil3gg"
+path="res://.godot/imported/highpitch_blip.ogg-41b06811935031ababf97c9c559420b7.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Generic Audio Pack/highpitch_blip.ogg"
+dest_files=["res://.godot/imported/highpitch_blip.ogg-41b06811935031ababf97c9c559420b7.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

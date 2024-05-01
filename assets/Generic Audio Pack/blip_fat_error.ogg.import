@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cqehd6763gc40"
+path="res://.godot/imported/blip_fat_error.ogg-463956d280cefbd6e171c76ef33c4ff3.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Generic Audio Pack/blip_fat_error.ogg"
+dest_files=["res://.godot/imported/blip_fat_error.ogg-463956d280cefbd6e171c76ef33c4ff3.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

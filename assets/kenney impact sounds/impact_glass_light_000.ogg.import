@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b4jtgwanjt6x6"
+path="res://.godot/imported/impact_glass_light_000.ogg-ea8971eaf8466a6b377957ed1784ba47.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/kenney impact sounds/impact_glass_light_000.ogg"
+dest_files=["res://.godot/imported/impact_glass_light_000.ogg-ea8971eaf8466a6b377957ed1784ba47.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

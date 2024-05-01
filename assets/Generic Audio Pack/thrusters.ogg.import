@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cdj2qlic8bolk"
+path="res://.godot/imported/thrusters.ogg-64abd1c9e2e07436718d7aa1c850a60d.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Generic Audio Pack/thrusters.ogg"
+dest_files=["res://.godot/imported/thrusters.ogg-64abd1c9e2e07436718d7aa1c850a60d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

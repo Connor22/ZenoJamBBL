@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c4w3l5n5nsrc2"
+path="res://.godot/imported/fart_shuffle.ogg-4d471ab2d536d372f1af95e092adba7a.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Generic Audio Pack/fart_shuffle.ogg"
+dest_files=["res://.godot/imported/fart_shuffle.ogg-4d471ab2d536d372f1af95e092adba7a.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ukk5pos4qrhr"
+path="res://.godot/imported/powerup_scifi.ogg-69100b161de870e523dc1572ca37a457.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Generic Audio Pack/powerup_scifi.ogg"
+dest_files=["res://.godot/imported/powerup_scifi.ogg-69100b161de870e523dc1572ca37a457.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
