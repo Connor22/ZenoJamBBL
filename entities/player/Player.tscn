@@ -1,13 +1,13 @@
 [gd_scene load_steps=13 format=3 uid="uid://mwx7hdtetol8"]
 
-[ext_resource type="Script" path="res://player/player.gd" id="1_fn4jj"]
-[ext_resource type="Texture2D" uid="uid://ou7e14x7dt0w" path="res://shared/icon.svg" id="2_g23kb"]
-[ext_resource type="Script" path="res://player/player_state/player_state_machine.gd" id="2_p6hic"]
-[ext_resource type="Script" path="res://player/player_state/walking_player_state.gd" id="3_02v2g"]
-[ext_resource type="Script" path="res://player/player_state/idle_player_state.gd" id="3_02xhs"]
-[ext_resource type="Script" path="res://player/player_state/shield_player_state.gd" id="5_5ka5h"]
-[ext_resource type="Script" path="res://player/aiming_player_state.gd" id="5_yi7xr"]
-[ext_resource type="Script" path="res://player/impacted_player_state.gd" id="7_q13bo"]
+[ext_resource type="Script" path="res://entities/player/player.gd" id="1_fn4jj"]
+[ext_resource type="Texture2D" uid="uid://ou7e14x7dt0w" path="res://assets/icon.svg" id="2_g23kb"]
+[ext_resource type="Script" path="res://entities/player/player_state/player_state_machine.gd" id="2_p6hic"]
+[ext_resource type="Script" path="res://entities/player/player_state/walking_player_state.gd" id="3_02v2g"]
+[ext_resource type="Script" path="res://entities/player/player_state/idle_player_state.gd" id="3_02xhs"]
+[ext_resource type="Script" path="res://entities/player/player_state/shield_player_state.gd" id="5_5ka5h"]
+[ext_resource type="Script" path="res://entities/player/aiming_player_state.gd" id="5_yi7xr"]
+[ext_resource type="Script" path="res://entities/player/impacted_player_state.gd" id="7_q13bo"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jheaw"]
 radius = 17.0
@@ -63,6 +63,7 @@ _data = {
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
+motion_mode = 1
 script = ExtResource("1_fn4jj")
 
 [node name="PlayerStateMachine" type="Node" parent="."]
@@ -140,4 +141,3 @@ libraries = {
 autoplay = "RESET"
 
 [connection signal="timeout" from="PlayerStateMachine/ShieldPlayerState/ImpactShapeLingerTimer" to="PlayerStateMachine/ShieldPlayerState" method="_on_impact_shape_linger_timer_timeout"]
-
