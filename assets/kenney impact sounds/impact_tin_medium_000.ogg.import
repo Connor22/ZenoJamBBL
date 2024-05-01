@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://hsh3kotpacer"
+path="res://.godot/imported/impact_tin_medium_000.ogg-730bd5d37076f5ebafcb43f245e16942.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/kenney impact sounds/impact_tin_medium_000.ogg"
+dest_files=["res://.godot/imported/impact_tin_medium_000.ogg-730bd5d37076f5ebafcb43f245e16942.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

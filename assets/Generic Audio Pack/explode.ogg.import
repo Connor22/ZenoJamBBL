@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://0xsqhfn8yyn4"
+path="res://.godot/imported/explode.ogg-a01a6d7137ae0ecf51864ad5660d4978.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Generic Audio Pack/explode.ogg"
+dest_files=["res://.godot/imported/explode.ogg-a01a6d7137ae0ecf51864ad5660d4978.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

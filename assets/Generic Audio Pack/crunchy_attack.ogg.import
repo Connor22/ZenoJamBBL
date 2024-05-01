@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bu7nwmhrlxlow"
+path="res://.godot/imported/crunchy_attack.ogg-7c071b0833b413ee1dd4efb1fc295f16.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Generic Audio Pack/crunchy_attack.ogg"
+dest_files=["res://.godot/imported/crunchy_attack.ogg-7c071b0833b413ee1dd4efb1fc295f16.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://fe3h4r8uen14"
+path="res://.godot/imported/impact_crumble.ogg-c756edc982d4752b7f13e2ebec8099ff.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Generic Audio Pack/impact_crumble.ogg"
+dest_files=["res://.godot/imported/impact_crumble.ogg-c756edc982d4752b7f13e2ebec8099ff.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

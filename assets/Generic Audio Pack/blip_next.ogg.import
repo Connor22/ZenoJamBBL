@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d4nql47sue6hl"
+path="res://.godot/imported/blip_next.ogg-166fbc827ba3af35075e6f55f0291d46.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Generic Audio Pack/blip_next.ogg"
+dest_files=["res://.godot/imported/blip_next.ogg-166fbc827ba3af35075e6f55f0291d46.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

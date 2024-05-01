@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://sb54k7kvw63o"
+path="res://.godot/imported/step_5.ogg-447cf302fbc20d5e086db2cf5c02816c.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Generic Audio Pack/step_5.ogg"
+dest_files=["res://.godot/imported/step_5.ogg-447cf302fbc20d5e086db2cf5c02816c.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

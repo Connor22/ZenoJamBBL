@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c71spqo1yy53q"
+path="res://.godot/imported/blip_car_unlock.ogg-f919ef843a9b649be5c8ac0502fd8461.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Generic Audio Pack/blip_car_unlock.ogg"
+dest_files=["res://.godot/imported/blip_car_unlock.ogg-f919ef843a9b649be5c8ac0502fd8461.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

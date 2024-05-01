@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cvqui3hjwqeem"
+path="res://.godot/imported/simple_bell.ogg-e5f94003476852fe3c5925194f5e1074.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Generic Audio Pack/simple_bell.ogg"
+dest_files=["res://.godot/imported/simple_bell.ogg-e5f94003476852fe3c5925194f5e1074.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

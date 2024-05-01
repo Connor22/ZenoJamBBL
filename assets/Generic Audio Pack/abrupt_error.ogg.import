@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://eekq2ycpt36k"
+path="res://.godot/imported/abrupt_error.ogg-093badd61a9a296d76a4031d1f546604.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Generic Audio Pack/abrupt_error.ogg"
+dest_files=["res://.godot/imported/abrupt_error.ogg-093badd61a9a296d76a4031d1f546604.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

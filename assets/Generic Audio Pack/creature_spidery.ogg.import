@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ddo44jgie74u0"
+path="res://.godot/imported/creature_spidery.ogg-b5ce906d76b99b2aa3e027ace9fba6f8.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Generic Audio Pack/creature_spidery.ogg"
+dest_files=["res://.godot/imported/creature_spidery.ogg-b5ce906d76b99b2aa3e027ace9fba6f8.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

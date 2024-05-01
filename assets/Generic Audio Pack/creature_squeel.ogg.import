@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bcg446e6wtjro"
+path="res://.godot/imported/creature_squeel.ogg-57a03af676b5f7b9964997559cfb71cb.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Generic Audio Pack/creature_squeel.ogg"
+dest_files=["res://.godot/imported/creature_squeel.ogg-57a03af676b5f7b9964997559cfb71cb.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

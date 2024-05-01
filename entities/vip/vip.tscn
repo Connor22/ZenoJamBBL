@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://55dyjvvtj12w"]
+
+[ext_resource type="Script" path="res://entities/vip/vip.gd" id="1_uhh5j"]
+[ext_resource type="Texture2D" uid="uid://beacqdsmk86dd" path="res://test/new_gradient_texture_1d.tres" id="2_266b6"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8xlae"]
+
+[node name="Vip" type="RigidBody2D"]
+script = ExtResource("1_uhh5j")
+move_tolerance = 0.1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_8xlae")
+scale = Vector2(0.273333, 60.1367)
+texture = ExtResource("2_266b6")

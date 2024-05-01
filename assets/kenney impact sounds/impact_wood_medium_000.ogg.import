@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c0qb1gn1mqmvf"
+path="res://.godot/imported/impact_wood_medium_000.ogg-d81665d87ca189e507ed7e935a6774cc.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/kenney impact sounds/impact_wood_medium_000.ogg"
+dest_files=["res://.godot/imported/impact_wood_medium_000.ogg-d81665d87ca189e507ed7e935a6774cc.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

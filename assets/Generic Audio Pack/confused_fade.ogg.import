@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://2i0bdfqw5ijf"
+path="res://.godot/imported/confused_fade.ogg-b7d06a159d41620c87ee8a3fc509623b.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Generic Audio Pack/confused_fade.ogg"
+dest_files=["res://.godot/imported/confused_fade.ogg-b7d06a159d41620c87ee8a3fc509623b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
