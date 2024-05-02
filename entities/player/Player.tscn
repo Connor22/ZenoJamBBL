@@ -6,8 +6,8 @@
 [ext_resource type="Script" path="res://entities/player/player_state/walking_player_state.gd" id="3_02v2g"]
 [ext_resource type="Script" path="res://entities/player/player_state/idle_player_state.gd" id="3_02xhs"]
 [ext_resource type="Script" path="res://entities/player/player_state/shield_player_state.gd" id="5_5ka5h"]
-[ext_resource type="Script" path="res://entities/player/aiming_player_state.gd" id="5_yi7xr"]
-[ext_resource type="Script" path="res://entities/player/impacted_player_state.gd" id="7_q13bo"]
+[ext_resource type="Script" path="res://entities/player/player_state/aiming_player_state.gd" id="5_r20ex"]
+[ext_resource type="Script" path="res://entities/player/player_state/impacted_player_state.gd" id="7_daxmv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jheaw"]
 radius = 17.0
@@ -77,7 +77,7 @@ script = ExtResource("3_02xhs")
 script = ExtResource("3_02v2g")
 
 [node name="AimingPlayerState" type="Node" parent="PlayerStateMachine"]
-script = ExtResource("5_yi7xr")
+script = ExtResource("5_r20ex")
 
 [node name="ShieldPlayerState" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("5_5ka5h")
@@ -87,7 +87,7 @@ wait_time = 0.1
 one_shot = true
 
 [node name="ImpactedPlayerState" type="Node" parent="PlayerStateMachine"]
-script = ExtResource("7_q13bo")
+script = ExtResource("7_daxmv")
 
 [node name="AimerPivot" type="Node2D" parent="."]
 visible = false
