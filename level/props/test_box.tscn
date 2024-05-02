@@ -19,7 +19,7 @@ scale = Vector2(1, 0.936493)
 shape = SubResource("RectangleShape2D_hbcow")
 
 [node name="ImpactShape" type="Area2D" parent="."]
-collision_layer = 4
+collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ImpactShape"]

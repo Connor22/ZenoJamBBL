@@ -12,7 +12,7 @@ func _player_state_physics_process(delta):
 	if player.get_slide_collision_count():
 		player_state_machine.transition_to("ImpactedPlayerState")
 		
-	if player.get_node("ImpactShape").has_overlapping_areas() and player.get_node("ImpactShape").monitorable:
+	if player.get_node("ImpactShape").has_overlapping_areas():
 		player_state_machine.transition_to("ImpactedPlayerState")
 
 func _enter(init_data: ={}):
@@ -23,18 +23,17 @@ func _enter(init_data: ={}):
 	# "Grow" Impact hitbox to regiter area_entered on area2d right next to player
 	player.get_node("ImpactShape").scale = Vector2.ZERO
 	var tween = get_tree().create_tween()
-	tween.tween_property(player.get_node("ImpactShape"), "scale", Vector2(1,1), 0.01)
+	tween.tween_property(player.get_node("ImpactShape"), "scale", Vector2(1,1), 0.05)
 	# Enable col for impacts
 	_toggle_impact_shape(true)
-
 
 func _exit(init_data: ={}):
 	# Disable col for impacts
 	$ImpactShapeLingerTimer.start()
 
-func _toggle_impact_shape(toggle: bool):
-	player.get_node("ImpactShape").monitorable = toggle
-	player.get_node("ImpactShape").visible = toggle
-
 func _on_impact_shape_linger_timer_timeout():
 	_toggle_impact_shape(false)
+	
+func _toggle_impact_shape(toggle: bool):
+	player.get_node("ImpactShape/CollisionShape2D").disabled = !toggle
+	player.get_node("ImpactShape/CollisionShape2D").visible = toggle

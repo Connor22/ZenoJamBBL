@@ -17,8 +17,8 @@ func _enter(init_data: ={}):
 	player.get_node("SpritePivot/StateTemp").text = "Aiming"
 	# Point and show the visual aimer
 	player.get_node("AimerPivot").look_at(player.get_global_mouse_position())
-	player.get_node("AimerPivot").visible = true
+	player.get_node("AimerPivot/ColorRect").visible = true
 
 func _exit(init_data: ={}):
 	# Hide the visual aimer
-	player.get_node("AimerPivot").visible = false
+	player.get_node("AimerPivot/ColorRect").visible = false
