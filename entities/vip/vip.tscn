@@ -1,12 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://55dyjvvtj12w"]
+[gd_scene load_steps=4 format=3 uid="uid://55dyjvvtj12w"]
 
 [ext_resource type="Script" path="res://entities/vip/vip.gd" id="1_uhh5j"]
-[ext_resource type="Texture2D" uid="uid://d4juy4i1k8rt4" path="res://test/test_scenes/knight.png" id="2_t33b0"]
+[ext_resource type="Texture2D" uid="uid://dnhv5bthaefvl" path="res://test/test_scenes/goth_knight_d_1.png" id="2_0lb1j"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8xlae"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dueds"]
-size = Vector2(71, 74.75)
+[sub_resource type="CircleShape2D" id="CircleShape2D_ghgl8"]
+radius = 48.0104
 
 [node name="Vip" type="RigidBody2D"]
 collision_layer = 16
@@ -14,12 +12,21 @@ collision_mask = 15
 mass = 25.0
 script = ExtResource("1_uhh5j")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("CanvasItemMaterial_8xlae")
-position = Vector2(-18, -2)
-scale = Vector2(0.0980797, 0.0980797)
-texture = ExtResource("2_t33b0")
+[node name="GothKnightD1" type="Sprite2D" parent="."]
+scale = Vector2(0.24, 0.24)
+texture = ExtResource("2_0lb1j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -3.625)
-shape = SubResource("RectangleShape2D_dueds")
+shape = SubResource("CircleShape2D_ghgl8")
+
+[node name="ImpactShape" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ImpactShape"]
+shape = SubResource("CircleShape2D_ghgl8")
+debug_color = Color(0.871501, 0.287571, 0.512767, 0.42)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[connection signal="area_entered" from="ImpactShape" to="." method="_on_impact_shape_area_entered"]

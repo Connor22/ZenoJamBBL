@@ -68,3 +68,8 @@ func _physics_process(delta):
 	elif line_exists:
 		queue_redraw()
 		line_exists = false
+
+
+func _on_impact_shape_area_entered(area):
+	if area.owner is Player:
+		apply_central_impulse(area.owner.shield_direction.normalized() * 50000)
