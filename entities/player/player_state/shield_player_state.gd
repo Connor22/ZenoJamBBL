@@ -3,8 +3,8 @@ extends PlayerState
 ## The state when the player is has just used the shield ability.
 
 func _player_state_physics_process(delta):
-	if player.velocity.length() > (player.sheild_friction * delta):
-		player.velocity -= player.velocity.normalized() * (player.sheild_friction * delta)
+	if player.velocity.length() > (player.shield_friction * delta):
+		player.velocity -= player.velocity.normalized() * (player.shield_friction * delta)
 	else:
 		player_state_machine.transition_to("IdlePlayerState")
 	player.move_and_slide()
@@ -19,7 +19,7 @@ func _enter(init_data: ={}):
 	player.get_node("SpritePivot/StateTemp").text = "Shield"
 	# Update Direction, Impulse the velocity
 	player.shield_direction = (player.get_global_mouse_position() - player.position).normalized()
-	player.velocity = player.shield_direction * player.sheild_max_speed
+	player.velocity = player.shield_direction * player.shield_max_speed
 	# "Grow" Impact hitbox to regiter area_entered on area2d right next to player
 	player.get_node("ImpactShape").scale = Vector2.ZERO
 	var tween = get_tree().create_tween()

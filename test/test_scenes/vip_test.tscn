@@ -1,44 +1,40 @@
-[gd_scene load_steps=6 format=3 uid="uid://bvm16qn1aix71"]
+[gd_scene load_steps=13 format=3 uid="uid://bvm16qn1aix71"]
 
 [ext_resource type="Script" path="res://test/test_scenes/vip_test.gd" id="1_3q5vt"]
 [ext_resource type="Texture2D" uid="uid://ddsatg2ofgwwi" path="res://assets/Godot Logos/svg/icon_color.svg" id="1_cjpq6"]
 [ext_resource type="PackedScene" uid="uid://55dyjvvtj12w" path="res://entities/vip/vip.tscn" id="1_nb7n8"]
+[ext_resource type="PackedScene" uid="uid://mwx7hdtetol8" path="res://entities/player/Player.tscn" id="4_wcmv7"]
+[ext_resource type="Script" path="res://test/test_scenes/testpath.gd" id="4_xumnt"]
+[ext_resource type="Script" path="res://entities/vip/VIPTarget.gd" id="5_15jjv"]
+[ext_resource type="Texture2D" uid="uid://kfxe8csdb8i" path="res://test/test_scenes/example_path.png" id="7_ki3do"]
 
-[sub_resource type="Curve2D" id="Curve2D_bth85"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -105.733, 187.233, 0, 0, 0, 0, 344.955, 612.398, 0, 0, 0, 0, 1151.67, 323.563)
-}
-point_count = 3
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wpm36"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_oobv6"]
 font_size = 100
+
+[sub_resource type="Curve2D" id="Curve2D_bth85"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 279.101, 1074.53, 0, 0, 0, 0, -10.756, 279.173, 0, 0, 0, 0, 198.842, 123.689, 0, 0, 0, 0, 845.033, 106.359, 0, 0, 0, 0, 1122.85, 211.495, 0, 0, 0, 0, 1176.36, 333.961, 0, 0, 0, 0, 733.905, 487.621, 0, 0, 0, 0, 723.615, 592.757, 0, 0, 0, 0, 972.625, 643.592, 0, 0, 0, 0, 1421.26, 790.321, 0, 0, 0, 0, 1886.35, 1020.23)
+}
+point_count = 11
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_crisc"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ei3ti"]
 
 [node name="VipTest" type="Node2D" node_paths=PackedStringArray("KeyPressLabel")]
 script = ExtResource("1_3q5vt")
 KeyPressLabel = NodePath("KeyPressLabel")
 
-[node name="Path2D" type="Path2D" parent="."]
-position = Vector2(123.378, 32.9412)
-scale = Vector2(0.485924, 0.865546)
-curve = SubResource("Curve2D_bth85")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(-105.733, 187.233)
-rotation = 0.756266
-
-[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D"]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_cjpq6")
-
 [node name="Vip" parent="." node_paths=PackedStringArray("target") instance=ExtResource("1_nb7n8")]
-position = Vector2(294, 173)
+position = Vector2(269, 963)
+mass = 44.81
+physics_material_override = SubResource("PhysicsMaterial_wpm36")
 gravity_scale = 0.0
-move_tolerance = 200.0
-path_speed = 7700
-SPEED = 60.0
-target = NodePath("../Path2D/PathFollow2D")
-clr = Color(1, 0, 0, 1)
-debug = true
+lock_rotation = true
+target = NodePath("../Path/Path2D/PathFollow2D")
+PathMoveDistance = 100.0
 
 [node name="KeyPressLabel" type="Label" parent="."]
 visible = false
@@ -50,3 +46,50 @@ text = "Space Pressed"
 label_settings = SubResource("LabelSettings_oobv6")
 horizontal_alignment = 1
 uppercase = true
+
+[node name="Player" parent="." instance=ExtResource("4_wcmv7")]
+position = Vector2(288, 363)
+
+[node name="Path" type="Node2D" parent="."]
+
+[node name="Path2D" type="Path2D" parent="Path"]
+position = Vector2(123.378, 32.9412)
+scale = Vector2(0.485924, 0.865546)
+curve = SubResource("Curve2D_bth85")
+script = ExtResource("4_xumnt")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path/Path2D"]
+position = Vector2(279.101, 1074.53)
+rotation = -1.92027
+script = ExtResource("5_15jjv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Path/Path2D/PathFollow2D"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_cjpq6")
+
+[node name="WorldBoundaries" type="StaticBody2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundaries"]
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_crisc")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="WorldBoundaries"]
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_crisc")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="WorldBoundaries"]
+position = Vector2(1080, 1080)
+shape = SubResource("WorldBoundaryShape2D_ei3ti")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="WorldBoundaries"]
+position = Vector2(1080, 1080)
+rotation = 4.71239
+shape = SubResource("WorldBoundaryShape2D_ei3ti")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(538, 542.875)
+scale = Vector2(0.62806, 0.673101)
+texture = ExtResource("7_ki3do")
+metadata/_edit_lock_ = true

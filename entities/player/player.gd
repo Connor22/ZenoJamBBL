@@ -5,8 +5,8 @@ extends CharacterBody2D
 @export var walking_max_speed = 250
 @export var walking_acceleration = 5000
 @export var walking_friction = 2000
-@export var sheild_max_speed = 2000
-@export var sheild_friction = 14000
+@export var shield_max_speed = 2000
+@export var shield_friction = 14000
 @export var reflect_impulse = 800
 @export var rebound_impulse = 400
 var shield_direction := Vector2.ZERO
