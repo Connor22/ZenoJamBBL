@@ -8,9 +8,9 @@ extends RigidBody2D
 
 @export_category("Movement")
 @export var move: bool = true
-# How fast should the VIP move towards the target
+## How fast should the VIP move towards the target
 @export_range(10, 100, 10) var MoveSpeedTowardsTarget: float = 50
-# How long in seconds to wait after being hit to start going home again
+## How long in seconds to wait after being hit to start going home again
 @export_range(0.1, 5.0, 0.1) var RecoveryTime: float = 1.0
 
 @export_category("Target")
@@ -19,17 +19,17 @@ extends RigidBody2D
 @export var distance_to_target: float
 @export var closest_offset: float
 @export var progress: float
-# At what distance should the VIP pull the target towards itself
+## At what distance should the VIP pull the target towards itself
 @export_range(100, 1000, 10) var TargetPullDistance: float = 200
-# How far from the target should the VIP really slow itself down while being flung 
+## How far from the target should the VIP really slow itself down while being flung 
 @export_range(100, 1000, 10) var DecelerationDistance: float = 100
-# How fast the target moves along the path
+## How fast the target moves along the path
 @export_range(100, 1000, 10) var TargetMoveSpeed: float = 200
 
 @export_category("Pathing")
-# How close should the VIP need to be to start pushing the target back
+## How close should the VIP need to be to start pushing the target back
 @export_range(100, 1000, 10) var PathMoveDistance: float = 200
-# How fast should the VIP push its target back along the path
+## How fast should the VIP push its target back along the path
 @export_range(100, 10000, 100) var PathMoveSpeed: int = 2500
 
 # var to clean up after enabling debug
@@ -63,11 +63,12 @@ func _physics_process(delta):
 	
 	if move: 
 		global_position = global_position.lerp(target.global_position, delta * MoveSpeedTowardsTarget * 0.01)
+		
+		# Avoid interpolation issues when too close
 		if global_position.distance_to(target.global_position) < 0.1:
 			global_position = target.global_position
-	
-	# Target slowly returns to beginning while nearby
-	if global_position.distance_to(target.global_position) < PathMoveDistance:
+		
+		# Target slowly returns to beginning
 		target.set_progress_ratio(target.get_progress_ratio() - (PathMoveSpeed * 0.0000001))
 
 	# Decrease speed after being bashed
