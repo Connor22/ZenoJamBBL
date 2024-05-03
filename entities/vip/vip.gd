@@ -10,6 +10,8 @@ extends RigidBody2D
 @export var move: bool = true
 # How fast should the VIP move towards the target
 @export_range(10, 100, 10) var MoveSpeedTowardsTarget: float = 50
+# How long in seconds to wait after being hit to start going home again
+@export_range(0.1, 5.0, 0.1) var RecoveryTime: float = 1.0
 
 @export_category("Target")
 @export var target: Node2D
@@ -33,6 +35,9 @@ extends RigidBody2D
 # var to clean up after enabling debug
 var line_exists: bool = false
 
+# var to help with waiting after being hit
+var timer: float = 0.0
+
 func _draw():
 	if ProjectSettings.get_setting("debug"):
 		draw_set_transform_matrix(global_transform.affine_inverse())
@@ -41,6 +46,13 @@ func _draw():
 	else:
 		draw_set_transform_matrix(global_transform.affine_inverse())
 		draw_line(global_position, target.global_position, Color(1, 1, 1, 0), 2.0)
+
+func _process(delta):
+	if (timer):
+		timer -= delta
+		if (timer < 0): 
+			move = true
+			timer = 0.0
 
 func _physics_process(delta):
 	var path = target.get_parent()
@@ -54,7 +66,7 @@ func _physics_process(delta):
 		if global_position.distance_to(target.global_position) < 0.1:
 			global_position = target.global_position
 	
-	# Target slowly returns to 0 while nearby
+	# Target slowly returns to beginning while nearby
 	if global_position.distance_to(target.global_position) < PathMoveDistance:
 		target.set_progress_ratio(target.get_progress_ratio() - (PathMoveSpeed * 0.0000001))
 
@@ -80,3 +92,6 @@ func _physics_process(delta):
 func _on_impact_shape_area_entered(area):
 	if area.owner is Player:
 		apply_central_impulse(area.owner.shield_direction.normalized() * 50000)
+		move = false
+		timer = RecoveryTime
+	
