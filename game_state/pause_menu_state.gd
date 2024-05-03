@@ -13,7 +13,7 @@ func _enter(init_data: ={}):
 	_paused_scene = init_data["paused_scene"] as Node
 	_paused_state_path = init_data["paused_state_path"] as String
 	current_scene = state_scene.instantiate()
-	add_child(current_scene)
+	add_child.call_deferred(current_scene)
 	# Subscribe state transitions
 	current_scene.get_node("Overlay/PauseMenu/CenterContainer/VBoxContainer/Abort").pressed.connect(_on_abort_to_main_menu)
 

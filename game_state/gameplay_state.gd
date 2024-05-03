@@ -13,7 +13,7 @@ func _enter(init_data: ={}):
 		current_scene.process_mode = Node.PROCESS_MODE_INHERIT
 	else:
 		current_scene = state_scene.instantiate()
-		add_child(current_scene)
+		add_child.call_deferred(current_scene)
 
 func _exit(init_data: ={}):
 	# Check to prevent puased scene from being deleted.

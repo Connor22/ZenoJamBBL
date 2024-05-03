@@ -8,20 +8,20 @@ var player: Player = null
 var player_state_machine: PlayerStateMachine = null
 
 # State specific call-backs ran by the game
-func _player_state_input(event: InputEvent):
+func _player_state_input(_event: InputEvent):
 	# Definition supplied by child
 	pass
-func _player_state_process(delta):
+func _player_state_process(_delta):
 	# Definition supplied by child
 	pass
-func _player_state_physics_process(delta):
+func _player_state_physics_process(_delta):
 	# Definition supplied by child
 	pass
 
 # State behaviour upon changing from one to another
-func _enter(init_data: ={}):
+func _enter(_init_data: ={}):
 	# Definition supplied by child
 	pass
-func _exit(init_data: ={}):
+func _exit(_init_data: ={}):
 	# Definition supplied by child
 	pass

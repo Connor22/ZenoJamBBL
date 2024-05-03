@@ -9,7 +9,7 @@ func _player_state_physics_process(delta):
 	else:
 		player_state_machine.transition_to("IdlePlayerState")
 
-func _enter(init_data: ={}):
+func _enter(_init_data: ={}):
 	player.get_node("SpritePivot/StateTemp").text = "Impacted"
 	# Impulse the velocity in opposite direction
 	player.velocity = -player.shield_direction.rotated(randf_range(-0.6,0.6)) * player.rebound_impulse

@@ -5,13 +5,13 @@ extends PathFollow2D
 func _ready():
 	set_loop(false)
 
-func _input(event):
+func _input(_event):
 	if ProjectSettings.get_setting("debug"):
 		visible = true
 	else:
 		visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
-	var path: Path2D = get_parent()
+func _physics_process(_delta):
+	var _path: Path2D = get_parent()
 	# path.curve.get_closest_offset()

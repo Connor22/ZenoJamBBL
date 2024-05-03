@@ -11,5 +11,5 @@ func _player_state_physics_process(delta):
 	if player.velocity == Vector2.ZERO and not player.wants_to_move():
 		player_state_machine.transition_to("IdlePlayerState")
 
-func _enter(init_data: ={}):
+func _enter(_init_data: ={}):
 	player.get_node("SpritePivot/StateTemp").text = "Walking"

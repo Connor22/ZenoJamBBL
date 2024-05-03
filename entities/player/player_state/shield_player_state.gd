@@ -15,7 +15,7 @@ func _player_state_physics_process(delta):
 	if player.get_node("ImpactShape").has_overlapping_areas():
 		player_state_machine.transition_to("ImpactedPlayerState")
 
-func _enter(init_data: ={}):
+func _enter(_init_data: ={}):
 	player.get_node("SpritePivot/StateTemp").text = "Shield"
 	# Update Direction, Impulse the velocity
 	player.shield_direction = (player.get_global_mouse_position() - player.position).normalized()
@@ -27,7 +27,7 @@ func _enter(init_data: ={}):
 	# Enable col for impacts
 	_toggle_impact_shape(true)
 
-func _exit(init_data: ={}):
+func _exit(_init_data: ={}):
 	# Disable col for impacts
 	$ImpactShapeLingerTimer.start()
 

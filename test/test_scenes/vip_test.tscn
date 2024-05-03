@@ -29,7 +29,6 @@ KeyPressLabel = NodePath("KeyPressLabel")
 
 [node name="Vip" parent="." node_paths=PackedStringArray("target") instance=ExtResource("1_nb7n8")]
 position = Vector2(269, 963)
-mass = 44.81
 physics_material_override = SubResource("PhysicsMaterial_wpm36")
 gravity_scale = 0.0
 lock_rotation = true

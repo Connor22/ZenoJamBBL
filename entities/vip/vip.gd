@@ -8,21 +8,29 @@ extends RigidBody2D
 
 @export_category("Movement")
 @export var move: bool = true
+# How fast should the VIP move towards the target
 @export_range(10, 100, 10) var MoveSpeedTowardsTarget: float = 50
 
 @export_category("Target")
 @export var target: Node2D
+# Some debug vars to help calculate the below
 @export var distance_to_target: float
 @export var closest_offset: float
 @export var progress: float
+# At what distance should the VIP pull the target towards itself
 @export_range(100, 1000, 10) var TargetPullDistance: float = 200
+# How far from the target should the VIP really slow itself down while being flung 
 @export_range(100, 1000, 10) var DecelerationDistance: float = 100
+# How fast the target moves along the path
+@export_range(100, 1000, 10) var TargetMoveSpeed: float = 200
 
 @export_category("Pathing")
+# How close should the VIP need to be to start pushing the target back
 @export_range(100, 1000, 10) var PathMoveDistance: float = 200
+# How fast should the VIP push its target back along the path
 @export_range(100, 10000, 100) var PathMoveSpeed: int = 2500
 
-
+# var to clean up after enabling debug
 var line_exists: bool = false
 
 func _draw():
@@ -38,7 +46,6 @@ func _physics_process(delta):
 	var path = target.get_parent()
 	
 	distance_to_target = position.distance_to(target.global_position)
-	
 	progress = target.get_progress()
 	closest_offset = path.curve.get_closest_offset(path.to_local(global_position))
 	
@@ -58,8 +65,8 @@ func _physics_process(delta):
 		linear_damp = 0.5
 	
 	# If we're a certain distance away, move the target closer to us along the path
-	if distance_to_target > TargetPullDistance:
-		target.set_progress(target.get_progress() + 5 * signf(path.curve.get_closest_offset(path.to_local(global_position)) - target.get_progress()))
+	if (distance_to_target > TargetPullDistance) && (linear_velocity.length_squared() > 1):
+		target.set_progress(target.get_progress() + delta * TargetMoveSpeed * signf(path.curve.get_closest_offset(path.to_local(global_position)) - target.get_progress()))
 		
 	# Debug
 	if ProjectSettings.get_setting("debug"):
