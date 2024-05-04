@@ -80,7 +80,10 @@ func _physics_process(delta):
 	# If we're a certain distance away, move the target closer to us along the path
 	if (distance_to_target > TargetPullDistance) && (linear_velocity.length_squared() > 1):
 		target.set_progress(target.get_progress() + delta * TargetMoveSpeed * signf(path.curve.get_closest_offset(path.to_local(global_position)) - target.get_progress()))
-		
+	
+	# Handle animation in physics process (?)
+	_handle_animation()
+	
 	# Debug
 	if ProjectSettings.get_setting("debug"):
 		queue_redraw() 
@@ -89,10 +92,26 @@ func _physics_process(delta):
 		queue_redraw()
 		line_exists = false
 
+func _handle_animation():
+	match rad_to_deg(linear_velocity.angle()):
+		_ when linear_velocity.length() < 10:
+			if $AnimationPlayer.current_animation != "sleep":
+				$AnimationPlayer.play("sleep")
+		var deg when deg >= -50 and deg <= 30:
+			if $AnimationPlayer.current_animation != "walk_right":
+				$AnimationPlayer.play("walk_right")
+		var deg when deg >= 150 or deg <= -130:
+			if $AnimationPlayer.current_animation != "walk_left":
+				$AnimationPlayer.play("walk_left")
+		var deg when deg >= 30 and deg <= 150:
+			if $AnimationPlayer.current_animation != "walk_down":
+				$AnimationPlayer.play("walk_down")
+		var deg when deg >= -130 and deg <= -50:
+			if $AnimationPlayer.current_animation != "walk_up":
+				$AnimationPlayer.play("walk_up")
 
 func _on_impact_shape_area_entered(area):
 	if area.owner is Player:
 		apply_central_impulse(area.owner.shield_direction.normalized() * 50000)
 		move = false
 		timer = RecoveryTime
-	

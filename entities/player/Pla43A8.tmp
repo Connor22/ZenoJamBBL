@@ -511,7 +511,6 @@ scale = Vector2(0.171875, 0.171875)
 texture = ExtResource("2_g23kb")
 
 [node name="StateTemp" type="Label" parent="SpritePivot"]
-visible = false
 texture_filter = 1
 offset_left = -78.0
 offset_top = -62.0
