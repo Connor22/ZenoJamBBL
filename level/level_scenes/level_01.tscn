@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://bslpw0ikc0y6m"]
+[gd_scene load_steps=13 format=3 uid="uid://bslpw0ikc0y6m"]
 
+[ext_resource type="Script" path="res://level/level.gd" id="1_g6lba"]
 [ext_resource type="PackedScene" uid="uid://55dyjvvtj12w" path="res://entities/vip/vip.tscn" id="1_kpdb2"]
 [ext_resource type="PackedScene" uid="uid://mwx7hdtetol8" path="res://entities/player/Player.tscn" id="2_4k1n8"]
 [ext_resource type="Script" path="res://test/test_scenes/testpath.gd" id="3_yh0rq"]
 [ext_resource type="Script" path="res://entities/vip/VIPTarget.gd" id="4_43sc3"]
 [ext_resource type="Texture2D" uid="uid://ddsatg2ofgwwi" path="res://assets/Godot Logos/svg/icon_color.svg" id="5_07wsr"]
+[ext_resource type="PackedScene" uid="uid://b6eyc4qoyhlsk" path="res://level/props/exit/level_exit.tscn" id="6_q7tyc"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nnfde"]
 
@@ -18,7 +20,12 @@ point_count = 2
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_maui3"]
 
-[node name="Level01" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_bmm6v"]
+radius = 139.27
+
+[node name="Level01" type="Node2D" node_paths=PackedStringArray("level_exit")]
+script = ExtResource("1_g6lba")
+level_exit = NodePath("LevelExit")
 
 [node name="Vip" parent="." node_paths=PackedStringArray("target") instance=ExtResource("1_kpdb2")]
 position = Vector2(538, 655)
@@ -69,6 +76,16 @@ shape = SubResource("WorldBoundaryShape2D_maui3")
 position = Vector2(1100, 1080)
 rotation = 4.71239
 shape = SubResource("WorldBoundaryShape2D_maui3")
+
+[node name="LevelExit" parent="." node_paths=PackedStringArray("collision_shape") instance=ExtResource("6_q7tyc")]
+position = Vector2(541, 67)
+direction = 2
+collision_shape = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelExit"]
+position = Vector2(3, -97)
+shape = SubResource("CircleShape2D_bmm6v")
+debug_color = Color(0, 0.796078, 0.454902, 0.419608)
 
 [node name="BGArt" type="ColorRect" parent="."]
 z_index = -2
