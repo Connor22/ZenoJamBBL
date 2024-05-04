@@ -17,7 +17,7 @@ enum PresetMotivation { NONE, MOTIVATED, DEMOTIVATED, PEEVED }
 ## How fast should the VIP move towards the target
 @export_range(10, 200, 10) var MoveSpeedTowardsTarget: float = 50
 ## How long in seconds to wait after being hit to start going home again
-@export_range(0.1, 5.0, 0.1) var RecoveryTime: float = 1.0
+@export_range(0.1, 5.0, 0.1, "suffix:s") var RecoveryTime: float = 1.0
 ## How much force the player has when bashing the VIP around
 @export_range(1000, 100000, 1000) var PlayerImpactImpulse: float = 50000
 
@@ -33,6 +33,8 @@ enum PresetMotivation { NONE, MOTIVATED, DEMOTIVATED, PEEVED }
 @export_range(0, 500, 10) var VipMinPullDistance: float = 0
 ## How far from the target should the VIP really slow itself down while being flung 
 @export_range(100, 1000, 10) var DecelerationDistance: float = 100
+## How fast in seconds the VIP should take to come to a stop when at the DecelerationDistance
+@export_range(0.1, 1.0, 0.1, "suffix:s") var SecondsToStop: float = 0.2
 ## How fast the target moves along the path
 @export_range(10, 1000, 10) var TargetMoveSpeed: float = 200
 
@@ -88,7 +90,11 @@ func _physics_process(delta):
 
 	# Decrease speed after being bashed
 	if !linear_velocity.is_zero_approx():
-		linear_damp = (distance_to_target / DecelerationDistance) * 5
+		linear_damp = (distance_to_target / DecelerationDistance) * (1/SecondsToStop)
+		if abs(linear_velocity.x) < 0.1:
+			linear_velocity.x = 0
+		if abs(linear_velocity.y) < 0.1:
+			linear_velocity.y = 0
 	else:
 		linear_damp = 0.5
 	
@@ -157,20 +163,31 @@ func set_preset_motivation(behavior: PresetMotivation):
 			PathMoveSpeed = 10000
 
 func _handle_animation():
-	match rad_to_deg(linear_velocity.angle()):
-		_ when linear_velocity.length() < 10:
+	# Determine which angle to use based on if the VIP is
+	# being pushed or not
+	var deg: float
+	if !linear_velocity.is_zero_approx():
+		deg = rad_to_deg(linear_velocity.angle())
+	else:
+		deg = rad_to_deg(get_angle_to(target.global_position))
+	
+	match deg:
+		_ when (!linear_velocity.is_zero_approx() && linear_velocity.length() < 10):
 			if $AnimationPlayer.current_animation != "sleep":
 				$AnimationPlayer.play("sleep")
-		var deg when deg >= -50 and deg <= 30:
+		_ when (linear_velocity.is_zero_approx() && target.get_progress() == 0):
+			if $AnimationPlayer.current_animation != "sleep":
+				$AnimationPlayer.play("sleep")
+		deg when deg >= -50 and deg <= 30:
 			if $AnimationPlayer.current_animation != "walk_right":
 				$AnimationPlayer.play("walk_right")
-		var deg when deg >= 150 or deg <= -130:
+		deg when deg >= 150 or deg <= -130:
 			if $AnimationPlayer.current_animation != "walk_left":
 				$AnimationPlayer.play("walk_left")
-		var deg when deg >= 30 and deg <= 150:
+		deg when deg >= 30 and deg <= 150:
 			if $AnimationPlayer.current_animation != "walk_down":
 				$AnimationPlayer.play("walk_down")
-		var deg when deg >= -130 and deg <= -50:
+		deg when deg >= -130 and deg <= -50:
 			if $AnimationPlayer.current_animation != "walk_up":
 				$AnimationPlayer.play("walk_up")
 

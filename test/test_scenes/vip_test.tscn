@@ -62,7 +62,7 @@ position = Vector2(279.101, 1074.53)
 rotation = -1.92027
 script = ExtResource("5_15jjv")
 
-[node name="Sprite2D" type="Sprite2D" parent="Path/Path2D/PathFollow2D"]
+[node name="DebugTarget" type="Sprite2D" parent="Path/Path2D/PathFollow2D"]
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_cjpq6")
 
