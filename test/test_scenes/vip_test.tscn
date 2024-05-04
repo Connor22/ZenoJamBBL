@@ -28,18 +28,12 @@ script = ExtResource("1_3q5vt")
 KeyPressLabel = NodePath("KeyPressLabel")
 
 [node name="Vip" parent="." node_paths=PackedStringArray("target") instance=ExtResource("1_nb7n8")]
-position = Vector2(269, 963)
+position = Vector2(269, 966)
 physics_material_override = SubResource("PhysicsMaterial_wpm36")
 gravity_scale = 0.0
 lock_rotation = true
-RecoveryTime = 0.6
-PlayerImpactImpulse = 20000.0
+on_ready_motivation = 1
 target = NodePath("../Path/Path2D/PathFollow2D")
-TargetPullDistance = 100.0
-VipMinPullDistance = 130.0
-TargetMoveSpeed = 400.0
-PathMoveDistance = 100.0
-PathMoveSpeed = 100
 
 [node name="KeyPressLabel" type="Label" parent="."]
 visible = false

@@ -43,7 +43,6 @@ func _player_state_physics_process(delta):
 	
 	if Input.is_action_just_released("aim_ability"):
 		# Orientate the hitbox when confirmed
-		print(rad_to_deg((player.get_global_mouse_position()-player.position).angle()))
 		player.get_node("ImpactShape").look_at(player.get_global_mouse_position())
 		player_state_machine.transition_to("ShieldPlayerState")
 

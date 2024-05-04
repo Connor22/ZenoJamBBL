@@ -7,7 +7,6 @@ extends CharacterBody2D
 @export var walking_friction = 2000
 @export var shield_max_speed = 2000
 @export var shield_friction = 14000
-@export var reflect_impulse = 800
 @export var rebound_impulse = 400
 var shield_direction := Vector2.ZERO
 @onready var animations = $AnimationPlayer as AnimationPlayer
