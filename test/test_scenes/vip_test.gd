@@ -4,7 +4,8 @@ extends Node2D
 var timer: float = 0
 
 func _init():
-	ProjectSettings.set_setting("debug", false)
+	pass
+	# ProjectSettings.set_setting("debug", false)
 
 func _input(event):
 	# Mouse in viewport coordinates.
