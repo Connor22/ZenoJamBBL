@@ -12,6 +12,8 @@ extends RigidBody2D
 @export_range(10, 100, 10) var MoveSpeedTowardsTarget: float = 50
 ## How long in seconds to wait after being hit to start going home again
 @export_range(0.1, 5.0, 0.1) var RecoveryTime: float = 1.0
+## How much force the player has when bashing the VIP around
+@export_range(1000, 100000, 1000) var PlayerImpactImpulse: float = 50000
 
 @export_category("Target")
 @export var target: Node2D
@@ -21,6 +23,8 @@ extends RigidBody2D
 @export var progress: float
 ## At what distance should the VIP pull the target towards itself
 @export_range(100, 1000, 10) var TargetPullDistance: float = 200
+## At what distance should the target pull the VIP towards itself
+@export_range(0, 500, 10) var VipMinPullDistance: float = 0
 ## How far from the target should the VIP really slow itself down while being flung 
 @export_range(100, 1000, 10) var DecelerationDistance: float = 100
 ## How fast the target moves along the path
@@ -62,7 +66,9 @@ func _physics_process(delta):
 	closest_offset = path.curve.get_closest_offset(path.to_local(global_position))
 	
 	if move: 
-		global_position = global_position.lerp(target.global_position, delta * MoveSpeedTowardsTarget * 0.01)
+		# Pull vip to target when outside the min pull distance
+		if distance_to_target > VipMinPullDistance:
+			global_position = global_position.lerp(target.global_position, delta * MoveSpeedTowardsTarget * 0.01)
 		
 		# Avoid interpolation issues when too close
 		if global_position.distance_to(target.global_position) < 0.1:
@@ -112,6 +118,6 @@ func _handle_animation():
 
 func _on_impact_shape_area_entered(area):
 	if area.owner is Player:
-		apply_central_impulse(area.owner.shield_direction.normalized() * 50000)
+		apply_central_impulse(area.owner.shield_direction.normalized() * PlayerImpactImpulse)
 		move = false
 		timer = RecoveryTime
