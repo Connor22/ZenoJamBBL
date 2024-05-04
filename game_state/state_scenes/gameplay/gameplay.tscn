@@ -1,28 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://cj6el6eihauos"]
+[gd_scene load_steps=3 format=3 uid="uid://cj6el6eihauos"]
 
 [ext_resource type="Script" path="res://game_state/state_scenes/gameplay/gameplay.gd" id="1_heyo6"]
-[ext_resource type="PackedScene" uid="uid://dmhjredba6pu2" path="res://level/props/test_box.tscn" id="2_lyqas"]
-[ext_resource type="PackedScene" uid="uid://mwx7hdtetol8" path="res://entities/player/Player.tscn" id="2_vg3fw"]
-[ext_resource type="PackedScene" uid="uid://dw1omdae4lyca" path="res://level/props/test_wall.tscn" id="3_ljv05"]
+[ext_resource type="Script" path="res://game_state/state_scenes/gameplay/level_manager.gd" id="2_k70gk"]
 
 [node name="Gameplay" type="Node"]
 script = ExtResource("1_heyo6")
 
 [node name="LevelManager" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
-
-[node name="TestBox" parent="LevelManager" instance=ExtResource("2_lyqas")]
-position = Vector2(169, 429)
-
-[node name="TestWall" parent="LevelManager" instance=ExtResource("3_ljv05")]
-position = Vector2(543, 507)
-rotation = -0.806672
+script = ExtResource("2_k70gk")
 
 [node name="PlayerManager" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
-
-[node name="Player" parent="PlayerManager" instance=ExtResource("2_vg3fw")]
-position = Vector2(303, 372)
 
 [node name="HUDManager" type="CanvasLayer" parent="."]
 layer = 2

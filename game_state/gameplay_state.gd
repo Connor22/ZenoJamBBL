@@ -14,6 +14,9 @@ func _enter(init_data: ={}):
 	else:
 		current_scene = state_scene.instantiate()
 		add_child.call_deferred(current_scene)
+	# Initialises LevelManager with level
+	if init_data.has("level_index"):
+		current_scene.get_node("LevelManager").initiate_level.call_deferred(init_data["level_index"])
 
 func _exit(init_data: ={}):
 	# Check to prevent puased scene from being deleted.

@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://4u7tuoc2q60t"]
+[gd_scene load_steps=11 format=3 uid="uid://4u7tuoc2q60t"]
 
 [ext_resource type="Script" path="res://main/main.gd" id="1_5q6hk"]
+[ext_resource type="PackedScene" uid="uid://bslpw0ikc0y6m" path="res://level/level_scenes/level_01.tscn" id="2_vmsqc"]
 [ext_resource type="Script" path="res://game_state/game_state_machine.gd" id="2_y47cf"]
+[ext_resource type="PackedScene" uid="uid://cttd64xbpiraj" path="res://level/level_scenes/level_02.tscn" id="3_nsye7"]
 [ext_resource type="Script" path="res://game_state/main_menu_state.gd" id="3_wqg48"]
 [ext_resource type="Script" path="res://game_state/gameplay_state.gd" id="4_640tu"]
 [ext_resource type="PackedScene" uid="uid://b7dxgoy5qreyo" path="res://game_state/state_scenes/main_menu/main_menu.tscn" id="4_kk008"]
@@ -11,6 +13,7 @@
 
 [node name="Main" type="Node"]
 script = ExtResource("1_5q6hk")
+packed_level_array = Array[PackedScene]([ExtResource("2_vmsqc"), ExtResource("3_nsye7")])
 
 [node name="SoundManager(Example)" type="Node" parent="."]
 

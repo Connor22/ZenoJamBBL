@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://b7dxgoy5qreyo"]
+[gd_scene load_steps=2 format=3 uid="uid://b7dxgoy5qreyo"]
+
+[ext_resource type="Script" path="res://game_state/state_scenes/main_menu/level_button.gd" id="1_25u7k"]
 
 [node name="MainMenu" type="Node"]
 
@@ -17,28 +19,77 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -320.5
-offset_top = -85.0
-offset_right = 320.5
-offset_bottom = 85.0
+offset_left = -315.0
+offset_top = -172.0
+offset_right = 315.0
+offset_bottom = 172.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 30
 
 [node name="GameTitle" type="Label" parent="GUI/Menu"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 60
-text = "Game Title"
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 120
+text = "Shield Squire"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Play" type="Button" parent="GUI/Menu"]
+[node name="GridContainer" type="GridContainer" parent="GUI/Menu"]
+layout_mode = 2
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+columns = 4
+
+[node name="Level01Button" type="Button" parent="GUI/Menu/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "PLAY GAME"
+theme_override_font_sizes/font_size = 51
+text = "Level 1
+"
+script = ExtResource("1_25u7k")
+
+[node name="Level02Button" type="Button" parent="GUI/Menu/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 51
+text = "Level 2
+"
+script = ExtResource("1_25u7k")
+level_index = 1
+
+[node name="Level03Button" type="Button" parent="GUI/Menu/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 51
+text = "Level 3
+"
+
+[node name="Level04Button" type="Button" parent="GUI/Menu/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 51
+text = "Level 4
+"
+
+[node name="Level05Button" type="Button" parent="GUI/Menu/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 51
+text = "Level 5
+"
+
+[node name="Level06Button" type="Button" parent="GUI/Menu/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 51
+text = "BOSS
+"
 
 [node name="Quit" type="Button" parent="GUI/Menu"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 31
 text = "QUIT GAME"

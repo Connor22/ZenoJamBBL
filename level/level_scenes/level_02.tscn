@@ -1,0 +1,80 @@
+[gd_scene load_steps=10 format=3 uid="uid://cttd64xbpiraj"]
+
+[ext_resource type="PackedScene" uid="uid://55dyjvvtj12w" path="res://entities/vip/vip.tscn" id="1_qfho8"]
+[ext_resource type="PackedScene" uid="uid://mwx7hdtetol8" path="res://entities/player/Player.tscn" id="2_fv72c"]
+[ext_resource type="Script" path="res://test/test_scenes/testpath.gd" id="3_3n8d0"]
+[ext_resource type="Script" path="res://entities/vip/VIPTarget.gd" id="4_g72we"]
+[ext_resource type="Texture2D" uid="uid://ddsatg2ofgwwi" path="res://assets/Godot Logos/svg/icon_color.svg" id="5_0k06j"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nnfde"]
+
+[sub_resource type="Curve2D" id="Curve2D_kh0f4"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 67.134, 373.243, 0, 0, 0, 0, 1657.92, 1026.01)
+}
+point_count = 2
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5yd20"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_maui3"]
+
+[node name="Level01" type="Node2D"]
+
+[node name="Vip" parent="." node_paths=PackedStringArray("target") instance=ExtResource("1_qfho8")]
+position = Vector2(282, 305)
+physics_material_override = SubResource("PhysicsMaterial_nnfde")
+gravity_scale = 0.0
+lock_rotation = true
+on_ready_motivation = 1
+target = NodePath("../Path/Path2D/PathFollow2D")
+
+[node name="Player" parent="." instance=ExtResource("2_fv72c")]
+position = Vector2(169, 209)
+
+[node name="Path" type="Node2D" parent="."]
+
+[node name="Path2D" type="Path2D" parent="Path"]
+position = Vector2(123.378, 32.9412)
+scale = Vector2(0.485924, 0.865546)
+curve = SubResource("Curve2D_kh0f4")
+script = ExtResource("3_3n8d0")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path/Path2D"]
+position = Vector2(67.134, 373.243)
+rotation = 0.389391
+script = ExtResource("4_g72we")
+
+[node name="Sprite2D" type="Sprite2D" parent="Path/Path2D/PathFollow2D"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_0k06j")
+
+[node name="WorldBoundaries" type="StaticBody2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundaries"]
+position = Vector2(0, -20)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_5yd20")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="WorldBoundaries"]
+position = Vector2(-20, 0)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_5yd20")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="WorldBoundaries"]
+position = Vector2(1080, 1100)
+shape = SubResource("WorldBoundaryShape2D_maui3")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="WorldBoundaries"]
+position = Vector2(1100, 1080)
+rotation = 4.71239
+shape = SubResource("WorldBoundaryShape2D_maui3")
+
+[node name="BGArt" type="ColorRect" parent="."]
+z_index = -2
+offset_right = 1080.0
+offset_bottom = 1080.0
+size_flags_horizontal = 4
+color = Color(0.543629, 0.397909, 0.25549, 1)
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
