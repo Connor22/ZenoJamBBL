@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ddsatg2ofgwwi" path="res://assets/Godot Logos/svg/icon_color.svg" id="6_lnxp4"]
 [ext_resource type="PackedScene" uid="uid://b6eyc4qoyhlsk" path="res://level/props/exit/level_exit.tscn" id="7_haskk"]
 [ext_resource type="PackedScene" uid="uid://ceh7yuche4ht5" path="res://entities/enemies/goblin/shoot_goblin.tscn" id="8_77a13"]
-[ext_resource type="Texture2D" path="res://level/LEVEL4.png" id="9_52bbp"]
+[ext_resource type="Texture2D" uid="uid://d1kc61pimqs7y" path="res://level/LEVEL4.png" id="9_52bbp"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nnfde"]
 

@@ -78,7 +78,7 @@ func _physics_process(delta):
 		# Target slowly returns to beginning
 		target.set_progress(target.get_progress() - (currentMorale.TargetBackwardsSpeed * delta))
 		
-		if ShouldRefresh && target.get_progress() == 0:
+		if ShouldRefresh && distance_to_target <= currentMorale.VipMinPullDistance && target.get_progress() == 0:
 			currentMotivation = Motivation.MOTIVATED
 			currentMorale = moraleStates[currentMotivation]
 			
