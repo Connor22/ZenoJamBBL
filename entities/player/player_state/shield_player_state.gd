@@ -1,6 +1,6 @@
 class_name ShieldPlayerState
 extends PlayerState
-## The state when the player is has just used the shield ability.
+## The state when the player is has just used the shield ability
 
 var idle_direction: String
 
@@ -12,6 +12,8 @@ func _player_state_physics_process(delta):
 	player.move_and_slide()
 	
 	if player.get_slide_collision_count():
+		var collidedObject = player.get_last_slide_collision().get_collider()
+		player.bash.emit(collidedObject, player.shield_direction)
 		player_state_machine.transition_to("ImpactedPlayerState", {"idle_direction" = idle_direction})
 		
 	if player.get_node("ImpactShape").has_overlapping_areas():
@@ -20,7 +22,7 @@ func _player_state_physics_process(delta):
 func _enter(_init_data: ={}):
 	player.get_node("SpritePivot/StateTemp").text = "Shield"
 	# Update Direction, Impulse the velocity
-	player.shield_direction = (player.get_global_mouse_position() - player.position).normalized()
+	player.shield_direction = (player.get_global_mouse_position() - player.global_position).normalized()
 	player.velocity = player.shield_direction * player.shield_max_speed
 	# "Grow" Impact hitbox to regiter area_entered on area2d right next to player
 	player.get_node("ImpactShape").scale = Vector2.ZERO

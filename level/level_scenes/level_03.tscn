@@ -1,0 +1,129 @@
+[gd_scene load_steps=17 format=3 uid="uid://dgpbmmiwjkrhl"]
+
+[ext_resource type="Script" path="res://level/level.gd" id="1_u63lr"]
+[ext_resource type="PackedScene" uid="uid://mwx7hdtetol8" path="res://entities/player/Player.tscn" id="2_kwrr7"]
+[ext_resource type="PackedScene" uid="uid://55dyjvvtj12w" path="res://entities/vip/vip.tscn" id="3_ubkna"]
+[ext_resource type="Script" path="res://test/test_scenes/testpath.gd" id="4_78dee"]
+[ext_resource type="Script" path="res://entities/vip/VIPTarget.gd" id="5_nyngd"]
+[ext_resource type="Texture2D" uid="uid://ddsatg2ofgwwi" path="res://assets/Godot Logos/svg/icon_color.svg" id="6_5cypy"]
+[ext_resource type="PackedScene" uid="uid://b6eyc4qoyhlsk" path="res://level/props/exit/level_exit.tscn" id="7_tg6nr"]
+[ext_resource type="Script" path="res://entities/enemies/goblin/enemypath.gd" id="8_k7pll"]
+[ext_resource type="PackedScene" uid="uid://dxi68ltrjchd0" path="res://entities/enemies/goblin/sword_goblin.tscn" id="8_kjef4"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nnfde"]
+
+[sub_resource type="Curve2D" id="Curve2D_kh0f4"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -42.5484, 895.581, 0, 0, 0, 0, 216.084, 111.824, 0, 0, 0, 0, 1550.96, 116.507, 0, 0, 0, 0, 1817.94, 973.645)
+}
+point_count = 4
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5yd20"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_maui3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iw58s"]
+radius = 146.014
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yumcy"]
+size = Vector2(442.444, 864.865)
+
+[sub_resource type="Curve2D" id="Curve2D_hx8yi"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -123.197, 104.017, 0, 0, 0, 0, 1879.12, 158.662)
+}
+point_count = 2
+
+[node name="Level02" type="Node2D" node_paths=PackedStringArray("level_exit")]
+scale = Vector2(0.74, 0.74)
+script = ExtResource("1_u63lr")
+level_exit = NodePath("LevelExit")
+
+[node name="Player" parent="." instance=ExtResource("2_kwrr7")]
+position = Vector2(197.297, 967.568)
+
+[node name="Vip" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_ubkna")]
+position = Vector2(97.2973, 897.297)
+physics_material_override = SubResource("PhysicsMaterial_nnfde")
+gravity_scale = 0.0
+lock_rotation = true
+target = NodePath("../Path/Path2D/PathFollow2D")
+
+[node name="Path" type="Node2D" parent="."]
+
+[node name="Path2D" type="Path2D" parent="Path"]
+position = Vector2(123.378, 32.9412)
+scale = Vector2(0.485924, 0.865546)
+curve = SubResource("Curve2D_kh0f4")
+script = ExtResource("4_78dee")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path/Path2D"]
+position = Vector2(-42.5484, 895.581)
+rotation = -1.25206
+script = ExtResource("5_nyngd")
+
+[node name="Sprite2D" type="Sprite2D" parent="Path/Path2D/PathFollow2D"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("6_5cypy")
+
+[node name="WorldBoundaries" type="StaticBody2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundaries"]
+position = Vector2(0, -20)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_5yd20")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="WorldBoundaries"]
+position = Vector2(-20, 0)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_5yd20")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="WorldBoundaries"]
+position = Vector2(1080, 1100)
+shape = SubResource("WorldBoundaryShape2D_maui3")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="WorldBoundaries"]
+position = Vector2(1100, 1080)
+rotation = 4.71239
+shape = SubResource("WorldBoundaryShape2D_maui3")
+
+[node name="LevelExit" parent="." node_paths=PackedStringArray("collision_shape") instance=ExtResource("7_tg6nr")]
+position = Vector2(984, 968)
+is_locked = true
+collision_shape = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelExit"]
+position = Vector2(40.3243, -31.5135)
+shape = SubResource("CircleShape2D_iw58s")
+
+[node name="BGArt" type="ColorRect" parent="."]
+z_index = -2
+offset_right = 1080.0
+offset_bottom = 1080.0
+size_flags_horizontal = 4
+color = Color(0.543629, 0.397909, 0.25549, 1)
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="BigWall2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BigWall2"]
+position = Vector2(545.946, 645.946)
+shape = SubResource("RectangleShape2D_yumcy")
+
+[node name="EnemyPath" type="Node2D" parent="."]
+
+[node name="Path2D" type="Path2D" parent="EnemyPath"]
+position = Vector2(123.378, 32.9412)
+scale = Vector2(0.485924, 0.865546)
+curve = SubResource("Curve2D_hx8yi")
+script = ExtResource("4_78dee")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="EnemyPath/Path2D"]
+position = Vector2(-123.197, 104.017)
+rotation = 0.0272839
+loop = false
+script = ExtResource("8_k7pll")
+
+[node name="SwordGoblin" parent="EnemyPath/Path2D/PathFollow2D" instance=ExtResource("8_kjef4")]
