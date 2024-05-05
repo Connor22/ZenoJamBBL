@@ -1,11 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://bry70k6wm4ui5"]
+[gd_scene load_steps=4 format=3 uid="uid://bry70k6wm4ui5"]
 
 [ext_resource type="Texture2D" uid="uid://3r8q7wv2bcaj" path="res://entities/objects/key/lock_key.png" id="1_nlpvy"]
+[ext_resource type="Script" path="res://entities/objects/key/key.gd" id="1_whyl2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hfsa4"]
 size = Vector2(81, 65)
 
-[node name="Key" type="StaticBody2D"]
+[node name="Key" type="Area2D"]
+collision_layer = 66
+collision_mask = 71
+script = ExtResource("1_whyl2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.24, 0.24)
@@ -14,3 +18,5 @@ texture = ExtResource("1_nlpvy")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -4.5)
 shape = SubResource("RectangleShape2D_hfsa4")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

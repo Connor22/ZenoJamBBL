@@ -14,7 +14,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_kh0f4"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 845.033, 578.893, 0, 0, 0, 0, 857.381, -35.7476)
+"points": PackedVector2Array(0, 0, 0, 0, 850.15, 706.668, 0, 0, 0, 0, 857.381, -35.7476)
 }
 point_count = 2
 
@@ -37,6 +37,7 @@ gravity_scale = 0.0
 lock_rotation = true
 target = NodePath("../Path/Path2D/PathFollow2D")
 StartingMotivation = 2
+ShouldRefresh = false
 
 [node name="Player" parent="." instance=ExtResource("2_4k1n8")]
 position = Vector2(533, 955)
@@ -56,8 +57,8 @@ curve = SubResource("Curve2D_kh0f4")
 script = ExtResource("3_yh0rq")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path/Path2D"]
-position = Vector2(845.033, 578.893)
-rotation = -1.55071
+position = Vector2(850.15, 706.668)
+rotation = -1.56106
 script = ExtResource("4_43sc3")
 
 [node name="Sprite2D" type="Sprite2D" parent="Path/Path2D/PathFollow2D"]

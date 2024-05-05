@@ -32,6 +32,7 @@ level_exit = NodePath("LevelExit")
 
 [node name="Player" parent="." instance=ExtResource("2_nocxj")]
 position = Vector2(64.8649, 1022.97)
+collision_mask = 127
 
 [node name="Vip" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_5hvwv")]
 position = Vector2(168.919, 912.162)
@@ -81,7 +82,8 @@ shape = SubResource("WorldBoundaryShape2D_maui3")
 
 [node name="LevelExit" parent="." node_paths=PackedStringArray("collision_shape") instance=ExtResource("7_76et7")]
 position = Vector2(984, 968)
-is_locked = true
+direction = 3
+keys = 1
 collision_shape = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelExit"]
@@ -90,13 +92,22 @@ shape = SubResource("CircleShape2D_iw58s")
 
 [node name="Key" parent="." instance=ExtResource("8_1pf4e")]
 position = Vector2(137.838, 471.622)
+collision_layer = 70
+
+[node name="BigWall5" type="StaticBody2D" parent="."]
+position = Vector2(1031.08, 3880.89)
+scale = Vector2(6.6675, 160.668)
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="BigWall5"]
+polygon = PackedVector2Array(-55.128, -22.3127, -44.9941, -23.3052, -29.7933, -23.3893, -16.4166, -23.1622, -24.321, -21.7912, -49.8583, -22.052)
+metadata/_edit_lock_ = true
 
 [node name="BigWall4" type="StaticBody2D" parent="."]
 position = Vector2(287.838, 283.784)
 scale = Vector2(2.58215, 12.6755)
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="BigWall4"]
-polygon = PackedVector2Array(31.9239, 24.3073, -31.4007, 25.6932, -14.6537, 7.24953, 5.23335, 2.45203, 16.7469, 10.9809, 25.1204, 15.6718)
+polygon = PackedVector2Array(83.7349, 25.7999, -31.4007, 25.6932, -25.1206, 3.41154, 5.23335, 2.45203, 45.5308, 3.51816, 87.9216, 3.30493)
 metadata/_edit_lock_ = true
 
 [node name="BigWall3" type="StaticBody2D" parent="."]
@@ -108,13 +119,14 @@ metadata/_edit_lock_ = true
 position = Vector2(-58.8675, 162.454)
 rotation = 2.51426
 scale = Vector2(1.72327, 2.20584)
-polygon = PackedVector2Array(98.2852, 94.1412, 33.6066, 67.7077, 36.493, 45.1128, 130.94, 100.523, 87.5135, 148.614, 66.1789, 136.53)
+polygon = PackedVector2Array(46.4138, 66.2478, -22.8844, 24.6579, -16.5782, 15.2648, 130.94, 100.523, 77.041, 159.898, 44.0618, 136.329, 91.1957, 103.728)
 metadata/_edit_lock_ = true
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-polygon = PackedVector2Array(572.973, 1062.16, 855.405, 1063.51, 848.649, 509.459, 755.405, 368.919, 571.622, 485.135)
+position = Vector2(68.9189, 32.4324)
+polygon = PackedVector2Array(572.973, 1062.16, 855.405, 1063.51, 821.622, 529.73, 747.297, 481.081, 605.405, 535.135)
 
 [node name="Level6" type="Sprite2D" parent="."]
 z_index = -2

@@ -8,6 +8,7 @@ enum Motivation { MOTIVATED, DEMOTIVATED, PEEVED }
 @export var StartingMotivation: Motivation = Motivation.MOTIVATED
 ## Should the target match the position of the knight or simply move towards it
 @export var TargetJump: bool = true
+@export var ShouldRefresh: bool = true
 
 @export_category("Debug")
 @export var debug: bool = false
@@ -76,7 +77,11 @@ func _physics_process(delta):
 		
 		# Target slowly returns to beginning
 		target.set_progress(target.get_progress() - (currentMorale.TargetBackwardsSpeed * delta))
-
+		
+		if ShouldRefresh && target.get_progress() == 0:
+			currentMotivation = Motivation.MOTIVATED
+			currentMorale = moraleStates[currentMotivation]
+			
 	# Decrease speed after being basheds
 	if !linear_velocity.is_zero_approx():
 		linear_damp = (distance_to_target / currentMorale.DecelerationDistance) * (1/currentMorale.SecondsToStop)
