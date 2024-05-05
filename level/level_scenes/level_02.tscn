@@ -29,7 +29,7 @@ radius = 146.014
 size = Vector2(442.444, 352.582)
 
 [node name="Level02" type="Node2D" node_paths=PackedStringArray("level_exit")]
-scale = Vector2(0.736095, 0.778389)
+scale = Vector2(0.74, 0.74)
 script = ExtResource("1_vbhst")
 level_exit = NodePath("LevelExit")
 
@@ -96,7 +96,6 @@ position = Vector2(529.823, 164.442)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BigWall2"]
 position = Vector2(224.156, 173.149)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_oyjlh")
 
 [node name="BigWall" type="StaticBody2D" parent="."]

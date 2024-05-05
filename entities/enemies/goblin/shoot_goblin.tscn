@@ -14,7 +14,7 @@ scale = Vector2(2, 2)
 collision_layer = 32
 collision_mask = 6
 script = ExtResource("1_y2n8n")
-ArrowSpeed = 900.0
+ArrowSpeed = 100.0
 ArrowObj = ExtResource("2_bhtlo")
 
 [node name="Sprite" type="Sprite2D" parent="."]

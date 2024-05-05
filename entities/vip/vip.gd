@@ -78,7 +78,7 @@ func _physics_process(delta):
 		# Target slowly returns to beginning
 		target.set_progress(target.get_progress() - (currentMorale.TargetBackwardsSpeed * delta))
 		
-		if ShouldRefresh && target.get_progress() == 0:
+		if ShouldRefresh && distance_to_target <= currentMorale.VipMinPullDistance && target.get_progress() == 0:
 			currentMotivation = Motivation.MOTIVATED
 			currentMorale = moraleStates[currentMotivation]
 			
@@ -93,7 +93,7 @@ func _physics_process(delta):
 	
 	# If we're a certain distance away, move the target closer to us along the path
 	if (distance_to_target > currentMorale.TargetPullDistance) && (linear_velocity.length_squared() > 10):
-		if TargetJump:
+		if TargetJump && target.get_progress() < closest_offset:
 			target.set_progress(closest_offset)
 		else:
 			target.set_progress(target.get_progress() + delta * currentMorale.TargetPullSpeed)
