@@ -30,10 +30,22 @@ theme_override_constants/separation = 30
 [node name="GameTitle" type="Label" parent="GUI/Menu"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.4704, 0.144, 0.96, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 16
-theme_override_font_sizes/font_size = 120
-text = "Shield Squire"
+theme_override_font_sizes/font_size = 150
+text = "Knighttime Blues"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameTitle2" type="Label" parent="GUI/Menu"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.96, 0.9392, 0.336, 1)
+theme_override_colors/font_outline_color = Color(0.229333, 0, 0.43, 1)
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 70
+text = "(feat. Buckler Boy)"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -41,7 +53,7 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_constants/h_separation = 15
 theme_override_constants/v_separation = 15
-columns = 4
+columns = 6
 
 [node name="Level 1" parent="GUI/Menu/Buttons" instance=ExtResource("2_vbw8h")]
 layout_mode = 2
