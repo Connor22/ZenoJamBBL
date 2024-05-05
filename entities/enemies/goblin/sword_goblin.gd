@@ -6,7 +6,7 @@ class_name SwordGoblin
 
 var flash_timer = 0.0
 
-@export var DisableDuration: float = 2.0
+@export var DisableDuration: float = 8.0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _ready():
@@ -17,9 +17,11 @@ func _ready():
 func _process(delta):
 	var sprite = $Sprite as Sprite2D
 	if flash_timer > 0:
+		collision_layer = 0
 		sprite.self_modulate.a = wrapf(flash_timer, 0.4, 0.8)
 		flash_timer -= delta
 	elif flash_timer < 0:
+		collision_layer = 32
 		sprite.self_modulate.a = 1.0
 		flash_timer = 0.0
 	
@@ -33,7 +35,7 @@ func _on_player_bash(object, direction):
 	if object == self:
 		flash_timer = DisableDuration
 
-func _on_area_2d_body_entered(body):
+func _on_aggro_box_body_entered(body):
 	match body.name:
 		"Vip" when flash_timer == 0.0:
 			var vip = body as VIP
