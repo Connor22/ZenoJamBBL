@@ -12,7 +12,8 @@ func _init():
 	dir.list_dir_begin()
 	var level = dir.get_next()
 	while level != "":
-		packed_level_array.append(load(path.path_join(level)))
+		if (level.ends_with(".tscn")):
+			packed_level_array.append(load(path.path_join(level)))
 		level = dir.get_next()
 
 # Request functions

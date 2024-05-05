@@ -15,6 +15,7 @@ enum Motivation { MOTIVATED, DEMOTIVATED, PEEVED }
 @export var clr: Color = Color("red")
 
 var currentMorale: Morale
+var currentMotivation: Motivation
 var move: bool = true
 
 const moraleStates: Array[Morale] = [
@@ -35,6 +36,8 @@ var timer: float = 0.0
 func _ready():
 	contact_monitor = true
 	currentMorale = moraleStates[StartingMotivation]
+	currentMotivation = StartingMotivation
+	
 	var parent = get_parent()
 	var player = parent.find_child("Player") as Player
 	player.connect("bash", _on_player_bash)
@@ -144,6 +147,14 @@ func _handle_animation():
 		deg when deg >= -130 and deg <= -50:
 			if $AnimationPlayer.current_animation != "walk_up":
 				$AnimationPlayer.play("walk_up")
+
+func incrementMotivation():
+	currentMotivation = min(currentMotivation + 1, Motivation.PEEVED)
+	currentMorale = moraleStates[currentMotivation]
+	
+func decrementMotivation():
+	currentMotivation = max(Motivation.MOTIVATED, currentMotivation - 1)
+	currentMorale = moraleStates[currentMotivation]
 
 func _on_player_bash(object, direction):
 	if object == self:

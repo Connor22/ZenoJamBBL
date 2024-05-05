@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b7dxgoy5qreyo"]
 
-[ext_resource type="Script" path="res://game_state/state_scenes/main_menu/level_button.gd" id="1_25u7k"]
+[ext_resource type="PackedScene" uid="uid://dkfvxappb6ba7" path="res://game_state/state_scenes/main_menu/level_button.tscn" id="2_vbw8h"]
 
 [node name="MainMenu" type="Node"]
 
@@ -37,56 +37,29 @@ text = "Shield Squire"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="GUI/Menu"]
+[node name="Buttons" type="GridContainer" parent="GUI/Menu"]
 layout_mode = 2
 theme_override_constants/h_separation = 15
 theme_override_constants/v_separation = 15
 columns = 4
 
-[node name="Level01Button" type="Button" parent="GUI/Menu/GridContainer"]
+[node name="Level 1" parent="GUI/Menu/Buttons" instance=ExtResource("2_vbw8h")]
 layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 51
-text = "Level 1
-"
-script = ExtResource("1_25u7k")
 
-[node name="Level02Button" type="Button" parent="GUI/Menu/GridContainer"]
+[node name="Level 2" parent="GUI/Menu/Buttons" instance=ExtResource("2_vbw8h")]
 layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 51
-text = "Level 2
-"
-script = ExtResource("1_25u7k")
-level_index = 1
 
-[node name="Level03Button" type="Button" parent="GUI/Menu/GridContainer"]
+[node name="Level 3" parent="GUI/Menu/Buttons" instance=ExtResource("2_vbw8h")]
 layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 51
-text = "Level 3
-"
 
-[node name="Level04Button" type="Button" parent="GUI/Menu/GridContainer"]
+[node name="Level 4" parent="GUI/Menu/Buttons" instance=ExtResource("2_vbw8h")]
 layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 51
-text = "Level 4
-"
 
-[node name="Level05Button" type="Button" parent="GUI/Menu/GridContainer"]
+[node name="Level 5" parent="GUI/Menu/Buttons" instance=ExtResource("2_vbw8h")]
 layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 51
-text = "Level 5
-"
 
-[node name="Level06Button" type="Button" parent="GUI/Menu/GridContainer"]
+[node name="Level 6" parent="GUI/Menu/Buttons" instance=ExtResource("2_vbw8h")]
 layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 51
-text = "BOSS
-"
 
 [node name="Quit" type="Button" parent="GUI/Menu"]
 layout_mode = 2
