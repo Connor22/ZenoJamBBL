@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ddsatg2ofgwwi" path="res://assets/Godot Logos/svg/icon_color.svg" id="6_i004a"]
 [ext_resource type="PackedScene" uid="uid://b6eyc4qoyhlsk" path="res://level/props/exit/level_exit.tscn" id="7_76et7"]
 [ext_resource type="PackedScene" uid="uid://bry70k6wm4ui5" path="res://entities/objects/key/key.tscn" id="8_1pf4e"]
-[ext_resource type="Texture2D" uid="uid://dbn6iicdigfcm" path="res://level/LEVEL6.png" id="9_r4j84"]
+[ext_resource type="Texture2D" path="res://level/LEVEL6.png" id="9_r4j84"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nnfde"]
 

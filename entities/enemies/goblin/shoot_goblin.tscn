@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ceh7yuche4ht5"]
 
 [ext_resource type="Script" path="res://entities/enemies/goblin/shoot_goblin.gd" id="1_y2n8n"]
-[ext_resource type="PackedScene" uid="uid://bgwkurpqknkbl" path="res://entities/enemies/goblin/arrow.tscn" id="2_bhtlo"]
+[ext_resource type="PackedScene" uid="uid://dup1ciwfg7blb" path="res://entities/enemies/goblin/arrow.tscn" id="2_bhtlo"]
 [ext_resource type="Texture2D" uid="uid://c7uus36v4kbs3" path="res://entities/enemies/goblin/goblin_bow.png" id="2_u1e10"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o2lge"]

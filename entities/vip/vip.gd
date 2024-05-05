@@ -156,6 +156,9 @@ func decrementMotivation():
 	currentMotivation = max(Motivation.MOTIVATED, currentMotivation - 1)
 	currentMorale = moraleStates[currentMotivation]
 
+func bash_vip(force, direction):
+	apply_central_impulse(direction * force)
+
 func _on_player_bash(object, direction):
 	if object == self:
 		apply_central_impulse(direction.normalized() * currentMorale.PlayerImpactImpulse)
