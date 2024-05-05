@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://i4tdpbc4naih"]
+[gd_scene load_steps=15 format=3 uid="uid://i4tdpbc4naih"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_w8f4y"]
 [ext_resource type="PackedScene" uid="uid://mwx7hdtetol8" path="res://entities/player/Player.tscn" id="2_nocxj"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ddsatg2ofgwwi" path="res://assets/Godot Logos/svg/icon_color.svg" id="6_i004a"]
 [ext_resource type="PackedScene" uid="uid://b6eyc4qoyhlsk" path="res://level/props/exit/level_exit.tscn" id="7_76et7"]
 [ext_resource type="PackedScene" uid="uid://bry70k6wm4ui5" path="res://entities/objects/key/key.tscn" id="8_1pf4e"]
+[ext_resource type="Texture2D" uid="uid://dbn6iicdigfcm" path="res://level/LEVEL6.png" id="9_r4j84"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nnfde"]
 
@@ -87,15 +88,6 @@ collision_shape = NodePath("CollisionShape2D")
 position = Vector2(76, 71)
 shape = SubResource("CircleShape2D_iw58s")
 
-[node name="BGArt" type="ColorRect" parent="."]
-z_index = -2
-offset_right = 1080.0
-offset_bottom = 1080.0
-size_flags_horizontal = 4
-color = Color(0.543629, 0.397909, 0.25549, 1)
-metadata/_edit_use_anchors_ = true
-metadata/_edit_lock_ = true
-
 [node name="Key" parent="." instance=ExtResource("8_1pf4e")]
 position = Vector2(137.838, 471.622)
 
@@ -123,3 +115,9 @@ metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 polygon = PackedVector2Array(572.973, 1062.16, 855.405, 1063.51, 848.649, 509.459, 755.405, 368.919, 571.622, 485.135)
+
+[node name="Level6" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(540, 540)
+texture = ExtResource("9_r4j84")
+metadata/_edit_lock_ = true

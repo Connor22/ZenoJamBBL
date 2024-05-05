@@ -1,8 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://b7dxgoy5qreyo"]
+[gd_scene load_steps=3 format=3 uid="uid://b7dxgoy5qreyo"]
 
+[ext_resource type="Texture2D" uid="uid://br177andkwo5t" path="res://game_state/state_scenes/main_menu/mainmenu.png" id="1_tub4g"]
 [ext_resource type="PackedScene" uid="uid://dkfvxappb6ba7" path="res://game_state/state_scenes/main_menu/level_button.tscn" id="2_vbw8h"]
 
 [node name="MainMenu" type="Node"]
+
+[node name="Mainmenu" type="Sprite2D" parent="."]
+position = Vector2(400, 400)
+scale = Vector2(0.740903, 0.741763)
+texture = ExtResource("1_tub4g")
 
 [node name="GUI" type="Control" parent="."]
 layout_mode = 3
@@ -11,20 +17,21 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="Menu" type="VBoxContainer" parent="GUI"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -315.0
-offset_top = -172.0
-offset_right = 315.0
-offset_bottom = 172.0
+anchor_bottom = 1.0
+offset_left = -316.5
+offset_top = -386.0
+offset_right = 316.5
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 theme_override_constants/separation = 30
 
 [node name="GameTitle" type="Label" parent="GUI/Menu"]
@@ -33,7 +40,7 @@ size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.4704, 0.144, 0.96, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 16
-theme_override_font_sizes/font_size = 150
+theme_override_font_sizes/font_size = 100
 text = "Knighttime Blues"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -44,7 +51,7 @@ size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.96, 0.9392, 0.336, 1)
 theme_override_colors/font_outline_color = Color(0.229333, 0, 0.43, 1)
 theme_override_constants/outline_size = 16
-theme_override_font_sizes/font_size = 70
+theme_override_font_sizes/font_size = 47
 text = "(feat. Buckler Boy)"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -57,24 +64,24 @@ columns = 6
 
 [node name="Level 1" parent="GUI/Menu/Buttons" instance=ExtResource("2_vbw8h")]
 layout_mode = 2
+theme_override_font_sizes/font_size = 26
 
 [node name="Level 2" parent="GUI/Menu/Buttons" instance=ExtResource("2_vbw8h")]
 layout_mode = 2
+theme_override_font_sizes/font_size = 26
 
 [node name="Level 3" parent="GUI/Menu/Buttons" instance=ExtResource("2_vbw8h")]
 layout_mode = 2
+theme_override_font_sizes/font_size = 26
 
 [node name="Level 4" parent="GUI/Menu/Buttons" instance=ExtResource("2_vbw8h")]
 layout_mode = 2
+theme_override_font_sizes/font_size = 26
 
 [node name="Level 5" parent="GUI/Menu/Buttons" instance=ExtResource("2_vbw8h")]
 layout_mode = 2
+theme_override_font_sizes/font_size = 26
 
 [node name="Level 6" parent="GUI/Menu/Buttons" instance=ExtResource("2_vbw8h")]
 layout_mode = 2
-
-[node name="Quit" type="Button" parent="GUI/Menu"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 31
-text = "QUIT GAME"
+theme_override_font_sizes/font_size = 26

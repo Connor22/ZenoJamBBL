@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dgpbmmiwjkrhl"]
+[gd_scene load_steps=19 format=3 uid="uid://dgpbmmiwjkrhl"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_u63lr"]
 [ext_resource type="PackedScene" uid="uid://mwx7hdtetol8" path="res://entities/player/Player.tscn" id="2_kwrr7"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b6eyc4qoyhlsk" path="res://level/props/exit/level_exit.tscn" id="7_tg6nr"]
 [ext_resource type="Script" path="res://entities/enemies/goblin/enemypath.gd" id="8_k7pll"]
 [ext_resource type="PackedScene" uid="uid://dxi68ltrjchd0" path="res://entities/enemies/goblin/sword_goblin.tscn" id="8_kjef4"]
+[ext_resource type="Texture2D" uid="uid://d2pm8ufobb8p2" path="res://level/LEVEL3.png" id="10_1srbv"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nnfde"]
 
@@ -148,11 +149,8 @@ script = ExtResource("8_k7pll")
 scale = Vector2(-1, 1)
 MoveSpeed = 500
 
-[node name="BGArt" type="ColorRect" parent="."]
+[node name="Level3" type="Sprite2D" parent="."]
 z_index = -2
-offset_right = 1080.0
-offset_bottom = 1080.0
-size_flags_horizontal = 4
-color = Color(0.543629, 0.397909, 0.25549, 1)
-metadata/_edit_use_anchors_ = true
+position = Vector2(540, 540)
+texture = ExtResource("10_1srbv")
 metadata/_edit_lock_ = true

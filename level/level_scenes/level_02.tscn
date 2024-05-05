@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cttd64xbpiraj"]
+[gd_scene load_steps=16 format=3 uid="uid://cttd64xbpiraj"]
 
 [ext_resource type="PackedScene" uid="uid://55dyjvvtj12w" path="res://entities/vip/vip.tscn" id="1_qfho8"]
 [ext_resource type="Script" path="res://level/level.gd" id="1_vbhst"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ddsatg2ofgwwi" path="res://assets/Godot Logos/svg/icon_color.svg" id="5_0k06j"]
 [ext_resource type="PackedScene" uid="uid://b6eyc4qoyhlsk" path="res://level/props/exit/level_exit.tscn" id="7_h7kc6"]
 [ext_resource type="PackedScene" uid="uid://dxi68ltrjchd0" path="res://entities/enemies/goblin/sword_goblin.tscn" id="8_ac6ki"]
+[ext_resource type="Texture2D" uid="uid://cvaj4oef0dy0w" path="res://level/LEVEL2.png" id="9_ulmmo"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nnfde"]
 
@@ -52,7 +53,7 @@ script = ExtResource("3_3n8d0")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path/Path2D"]
 position = Vector2(750.035, 1118.84)
-rotation = -0.360509
+rotation = -0.360505
 script = ExtResource("4_g72we")
 
 [node name="Sprite2D" type="Sprite2D" parent="Path/Path2D/PathFollow2D"]
@@ -90,15 +91,6 @@ collision_shape = NodePath("CollisionShape2D")
 position = Vector2(76, 71)
 shape = SubResource("CircleShape2D_iw58s")
 
-[node name="BGArt" type="ColorRect" parent="."]
-z_index = -2
-offset_right = 1080.0
-offset_bottom = 1080.0
-size_flags_horizontal = 4
-color = Color(0.543629, 0.397909, 0.25549, 1)
-metadata/_edit_use_anchors_ = true
-metadata/_edit_lock_ = true
-
 [node name="SwordGoblin" parent="." instance=ExtResource("8_ac6ki")]
 position = Vector2(529.823, 164.442)
 
@@ -113,3 +105,9 @@ shape = SubResource("RectangleShape2D_oyjlh")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BigWall"]
 position = Vector2(858.585, 127.186)
 shape = SubResource("RectangleShape2D_oyjlh")
+
+[node name="Level2" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(540, 540)
+texture = ExtResource("9_ulmmo")
+metadata/_edit_lock_ = true

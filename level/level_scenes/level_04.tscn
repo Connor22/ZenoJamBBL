@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ddsatg2ofgwwi" path="res://assets/Godot Logos/svg/icon_color.svg" id="6_lnxp4"]
 [ext_resource type="PackedScene" uid="uid://b6eyc4qoyhlsk" path="res://level/props/exit/level_exit.tscn" id="7_haskk"]
 [ext_resource type="PackedScene" uid="uid://ceh7yuche4ht5" path="res://entities/enemies/goblin/shoot_goblin.tscn" id="8_77a13"]
+[ext_resource type="Texture2D" uid="uid://d1kc61pimqs7y" path="res://level/LEVEL4.png" id="9_52bbp"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nnfde"]
 
@@ -49,7 +50,7 @@ script = ExtResource("4_tmqdx")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path/Path2D"]
 position = Vector2(1386.88, 57.1792)
-rotation = 1.10863
+rotation = 1.10864
 script = ExtResource("5_plos0")
 
 [node name="Sprite2D" type="Sprite2D" parent="Path/Path2D/PathFollow2D"]
@@ -129,6 +130,12 @@ metadata/_edit_lock_ = true
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BigWall2"]
 position = Vector2(455.198, 113.158)
 polygon = PackedVector2Array(20.2547, 15.7561, 244.123, 105.28, -58.6321, 268.57, -58.6321, 57.295)
+metadata/_edit_lock_ = true
+
+[node name="Level4" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(540, 540)
+texture = ExtResource("9_52bbp")
 metadata/_edit_lock_ = true
 
 [editable path="ShootGoblin"]
