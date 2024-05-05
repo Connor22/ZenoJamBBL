@@ -1,57 +1,43 @@
 class_name VIP
 extends RigidBody2D
 
-enum PresetMotivation { NONE, MOTIVATED, DEMOTIVATED, PEEVED }
+enum Motivation { MOTIVATED, DEMOTIVATED, PEEVED }
 
-@export_category("Override")
-## Will override the following exports with a preset type of "motivation" on _ready()
-@export var on_ready_motivation: PresetMotivation = PresetMotivation.NONE
+@export var target: Node2D
+## What motivation the knight starts at
+@export var StartingMotivation: Motivation = Motivation.MOTIVATED
+## Should the target match the position of the knight or simply move towards it
+@export var TargetJump: bool = true
 
 @export_category("Debug")
 @export var debug: bool = false
 @export var print_location: bool = false
 @export var clr: Color = Color("red")
 
-@export_category("Movement")
-@export var move: bool = true
-## How fast should the VIP move towards the target
-@export_range(10, 200, 10) var MoveSpeedTowardsTarget: float = 50
-## How long in seconds to wait after being hit to start going home again
-@export_range(0.1, 5.0, 0.1, "suffix:s") var RecoveryTime: float = 1.0
-## How much force the player has when bashing the VIP around
-@export_range(1000, 100000, 1000) var PlayerImpactImpulse: float = 50000
+var currentMorale: Morale
+var move: bool = true
 
-@export_category("Target")
-@export var target: Node2D
-# Some debug vars to help calculate the below
-@export var distance_to_target: float
-@export var closest_offset: float
-@export var progress: float
-## At what distance should the VIP pull the target towards itself
-@export_range(100, 1000, 10) var TargetPullDistance: float = 200
-## At what distance should the target pull the VIP towards itself
-@export_range(0, 500, 10) var VipMinPullDistance: float = 0
-## How far from the target should the VIP really slow itself down while being flung 
-@export_range(100, 1000, 10) var DecelerationDistance: float = 100
-## How fast in seconds the VIP should take to come to a stop when at the DecelerationDistance
-@export_range(0.1, 1.0, 0.1, "suffix:s") var SecondsToStop: float = 0.2
-## How fast the target moves along the path
-@export_range(10, 1000, 10) var TargetMoveSpeed: float = 200
+const moraleStates: Array[Morale] = [
+	preload("res://entities/vip/MoraleStates/Motivated.tres"),
+	preload("res://entities/vip/MoraleStates/Demotivated.tres"),
+	preload("res://entities/vip/MoraleStates/Peeved.tres")
+]
 
-@export_category("Pathing")
-## How close should the VIP need to be to start pushing the target back
-@export_range(100, 1000, 10) var PathMoveDistance: float = 200
-## How fast should the VIP push its target back along the path
-@export_range(0, 10000, 100) var PathMoveSpeed: int = 2500
-
-# var to clean up after enabling debug
+# debug
 var line_exists: bool = false
+var distance_to_target: float
+var closest_offset: float
+var progress: float
 
 # var to help with waiting after being hit
 var timer: float = 0.0
 
 func _ready():
-	set_preset_motivation(on_ready_motivation)
+	contact_monitor = true
+	currentMorale = moraleStates[StartingMotivation]
+	var parent = get_parent()
+	var player = parent.find_child("Player") as Player
+	player.connect("bash", _on_player_bash)
 
 func _draw():
 	if ProjectSettings.get_setting("debug"):
@@ -72,35 +58,42 @@ func _process(delta):
 func _physics_process(delta):
 	var path = target.get_parent()
 	
-	distance_to_target = position.distance_to(target.global_position)
+	distance_to_target = global_position.distance_to(target.global_position)
 	progress = target.get_progress()
 	closest_offset = path.curve.get_closest_offset(path.to_local(global_position))
 	
 	if move: 
 		# Pull vip to target when outside the min pull distance
-		if distance_to_target > VipMinPullDistance:
-			global_position = global_position.lerp(target.global_position, delta * MoveSpeedTowardsTarget * 0.01)
+		if distance_to_target > currentMorale.VipMinPullDistance:
+			global_position = global_position.move_toward(target.global_position, delta * currentMorale.VIPTowardsTargetSpeed)
 		
 		# Avoid interpolation issues when too close
 		if global_position.distance_to(target.global_position) < 0.1:
 			global_position = target.global_position
 		
 		# Target slowly returns to beginning
-		target.set_progress_ratio(target.get_progress_ratio() - (PathMoveSpeed * 0.0000001))
+		target.set_progress(target.get_progress() - (currentMorale.TargetBackwardsSpeed * delta))
 
-	# Decrease speed after being bashed
+	# Decrease speed after being basheds
 	if !linear_velocity.is_zero_approx():
-		linear_damp = (distance_to_target / DecelerationDistance) * (1/SecondsToStop)
-		if abs(linear_velocity.x) < 0.1:
+		linear_damp = (distance_to_target / currentMorale.DecelerationDistance) * (1/currentMorale.SecondsToStop)
+		if linear_velocity.length() < 10:
 			linear_velocity.x = 0
-		if abs(linear_velocity.y) < 0.1:
 			linear_velocity.y = 0
 	else:
 		linear_damp = 0.5
 	
 	# If we're a certain distance away, move the target closer to us along the path
-	if (distance_to_target > TargetPullDistance) && (linear_velocity.length_squared() > 1):
-		target.set_progress(target.get_progress() + delta * TargetMoveSpeed * signf(path.curve.get_closest_offset(path.to_local(global_position)) - target.get_progress()))
+	if (distance_to_target > currentMorale.TargetPullDistance) && (linear_velocity.length_squared() > 10):
+		if TargetJump:
+			target.set_progress(closest_offset)
+		else:
+			target.set_progress(target.get_progress() + delta * currentMorale.TargetPullSpeed)
+			# if we want speed to change based on distance
+				#actualPullSpeed = clampf( 
+				#currentMorale.TargetPullSpeed * (target.get_progress() - closest_offset),
+				#0,
+				#MaxPullSpeed)
 	
 	# Handle animation in physics process (?)
 	_handle_animation()
@@ -117,50 +110,11 @@ func _unhandled_input(event):
 	# Debug code to test motivation presets live
 	if ProjectSettings.get_setting("debug") and event is InputEventKey and event.pressed:
 		if event.keycode == KEY_I:
-			set_preset_motivation(PresetMotivation.MOTIVATED)
+			currentMorale = moraleStates[Motivation.MOTIVATED]
 		if event.keycode == KEY_O:
-			set_preset_motivation(PresetMotivation.DEMOTIVATED)
+			currentMorale = moraleStates[Motivation.DEMOTIVATED]
 		if event.keycode == KEY_P:
-			set_preset_motivation(PresetMotivation.PEEVED)
-
-func set_preset_motivation(behavior: PresetMotivation):
-	match behavior:
-		# Default behaviour when the VIP is unscathed or has just recovered morale.
-		PresetMotivation.MOTIVATED:
-			move = true
-			MoveSpeedTowardsTarget = 50
-			RecoveryTime = 0.6
-			PlayerImpactImpulse = 20000
-			TargetPullDistance = 100
-			VipMinPullDistance = 130
-			DecelerationDistance = 100
-			TargetMoveSpeed = 400
-			PathMoveDistance = 200
-			PathMoveSpeed = 0
-		# Behaviour when hit once, will default to "motivated" after a cooldown.
-		PresetMotivation.DEMOTIVATED:
-			move = true
-			MoveSpeedTowardsTarget = 70
-			RecoveryTime = 0.6
-			PlayerImpactImpulse = 20000
-			TargetPullDistance = 100
-			VipMinPullDistance = 130
-			DecelerationDistance = 100
-			TargetMoveSpeed = 100
-			PathMoveDistance = 200
-			PathMoveSpeed = 7000
-		# Behaviour when hit again while "demotivated", will default to "motivated" after a cooldown.
-		PresetMotivation.PEEVED:
-			move = true
-			MoveSpeedTowardsTarget = 150
-			RecoveryTime = 0.3
-			PlayerImpactImpulse = 2000
-			TargetPullDistance = 100
-			VipMinPullDistance = 0
-			DecelerationDistance = 100
-			TargetMoveSpeed = 50
-			PathMoveDistance = 200
-			PathMoveSpeed = 10000
+			currentMorale = moraleStates[Motivation.PEEVED]
 
 func _handle_animation():
 	# Determine which angle to use based on if the VIP is
@@ -175,7 +129,7 @@ func _handle_animation():
 		_ when (!linear_velocity.is_zero_approx() && linear_velocity.length() < 10):
 			if $AnimationPlayer.current_animation != "sleep":
 				$AnimationPlayer.play("sleep")
-		_ when (linear_velocity.is_zero_approx() && target.get_progress() == 0):
+		_ when (linear_velocity.is_zero_approx() && (target.get_progress() == 0 && distance_to_target < currentMorale.VipMinPullDistance)):
 			if $AnimationPlayer.current_animation != "sleep":
 				$AnimationPlayer.play("sleep")
 		deg when deg >= -50 and deg <= 30:
@@ -191,8 +145,7 @@ func _handle_animation():
 			if $AnimationPlayer.current_animation != "walk_up":
 				$AnimationPlayer.play("walk_up")
 
-func _on_impact_shape_area_entered(area):
-	if area.owner is Player:
-		apply_central_impulse(area.owner.shield_direction.normalized() * PlayerImpactImpulse)
-		move = false
-		timer = RecoveryTime
+func _on_player_bash(object, direction):
+	if object == self:
+		apply_central_impulse(direction.normalized() * currentMorale.PlayerImpactImpulse)
+

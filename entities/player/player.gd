@@ -2,6 +2,8 @@ class_name Player
 extends CharacterBody2D
 ## Contains values and reuseble functionality for the player.
 
+signal bash(object, direction)
+
 @export var walking_max_speed = 250
 @export var walking_acceleration = 5000
 @export var walking_friction = 2000

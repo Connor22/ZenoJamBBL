@@ -18,8 +18,8 @@ config/icon="res://assets/icon.svg"
 
 [display]
 
-window/size/viewport_width=1080
-window/size/viewport_height=1080
+window/size/viewport_width=800
+window/size/viewport_height=800
 window/size/resizable=false
 window/stretch/mode="canvas_items"
 
@@ -68,6 +68,7 @@ aim_ability={
 2d_physics/layer_4="impact_enemy"
 2d_physics/layer_5="VIP"
 2d_physics/layer_6="enemies"
+2d_physics/layer_7="objects"
 
 [physics]
 
@@ -75,4 +76,6 @@ aim_ability={
 
 [rendering]
 
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
 environment/defaults/default_clear_color=Color(0.227711, 0.282393, 0.353237, 1)

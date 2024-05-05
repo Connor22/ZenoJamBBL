@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://crmmqgr0ls2gi"]
+
+[ext_resource type="Script" path="res://entities/objects/coffee/coffee.gd" id="1_5omp3"]
+[ext_resource type="Texture2D" uid="uid://b3bitgbblmpln" path="res://entities/objects/coffee/genericItem_color_124.png" id="1_mrqtf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jybul"]
+radius = 68.3593
+
+[node name="CoffeeObject" type="RigidBody2D"]
+script = ExtResource("1_5omp3")
+
+[node name="CoffeeSprite" type="Sprite2D" parent="."]
+position = Vector2(5.915, -1.995)
+texture = ExtResource("1_mrqtf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jybul")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

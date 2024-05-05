@@ -36,5 +36,5 @@ func update_sign():
 			$LevelExitSprites.flip_h = false
 			collision_shape.disabled = false
 
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	emit_signal("level_complete")

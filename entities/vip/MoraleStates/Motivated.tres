@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Morale" load_steps=2 format=3 uid="uid://bmdpw6rroyjkk"]
+
+[ext_resource type="Script" path="res://entities/vip/MoraleStates/Morale.gd" id="1_1er3o"]
+
+[resource]
+script = ExtResource("1_1er3o")
+RecoveryTime = 1.5
+VIPTowardsTargetSpeed = 55.0
+TargetPullSpeed = 100.0
+TargetBackwardsSpeed = 55.0
+PlayerImpactImpulse = 20000.0
+SecondsToStop = 0.4
+TargetPullDistance = 0.0
+VipMinPullDistance = 130.0
+DecelerationDistance = 200.0
+PathMoveDistance = 210.0
