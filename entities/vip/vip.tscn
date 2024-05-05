@@ -301,7 +301,7 @@ _data = {
 
 [node name="Vip" type="RigidBody2D"]
 collision_layer = 16
-collision_mask = 15
+collision_mask = 3
 mass = 25.0
 script = ExtResource("1_uhh5j")
 
@@ -322,12 +322,10 @@ hframes = 2
 vframes = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CircleShape2D_ghgl8")
 
 [node name="ImpactShape" type="Area2D" parent="."]
-visible = false
-collision_layer = 0
+collision_layer = 12
 collision_mask = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ImpactShape"]

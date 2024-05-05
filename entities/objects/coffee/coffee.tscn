@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://crmmqgr0ls2gi"]
 
 [ext_resource type="Script" path="res://entities/objects/coffee/coffee.gd" id="1_5omp3"]
-[ext_resource type="Texture2D" uid="uid://vqhit4lfcdqr" path="res://entities/objects/coffee/coffee.png" id="2_bpge6"]
+[ext_resource type="Texture2D" path="res://entities/objects/coffee/coffee.png" id="2_bpge6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jybul"]
 radius = 68.3593

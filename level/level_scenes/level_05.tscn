@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dxi68ltrjchd0" path="res://entities/enemies/goblin/sword_goblin.tscn" id="8_6dpfg"]
 [ext_resource type="Script" path="res://entities/enemies/goblin/enemypath.gd" id="9_6r30t"]
 [ext_resource type="PackedScene" uid="uid://ceh7yuche4ht5" path="res://entities/enemies/goblin/shoot_goblin.tscn" id="9_xhqmx"]
-[ext_resource type="Texture2D" uid="uid://cncmmu0y214s1" path="res://level/LEVEL5.png" id="10_iuc5b"]
+[ext_resource type="Texture2D" path="res://level/LEVEL5.png" id="10_iuc5b"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nnfde"]
 

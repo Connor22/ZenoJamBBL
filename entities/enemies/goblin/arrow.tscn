@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bgwkurpqknkbl"]
+[gd_scene load_steps=4 format=3 uid="uid://dup1ciwfg7blb"]
 
 [ext_resource type="Texture2D" uid="uid://dgtt3jgys3wn5" path="res://entities/enemies/goblin/goblin_arrow.png" id="1_8c6vi"]
 [ext_resource type="Script" path="res://entities/enemies/goblin/arrow.gd" id="1_ftl3f"]
@@ -7,8 +7,8 @@
 size = Vector2(75, 23)
 
 [node name="Arrow" type="RigidBody2D"]
-collision_layer = 104
-collision_mask = 22
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_ftl3f")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -19,4 +19,19 @@ texture = ExtResource("1_8c6vi")
 position = Vector2(0.5, -1.5)
 shape = SubResource("RectangleShape2D_y2777")
 
+[node name="ImpactBox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ImpactBox"]
+position = Vector2(0.5, -1.5)
+shape = SubResource("RectangleShape2D_y2777")
+debug_color = Color(0.973677, 0, 0.432277, 0.42)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0.5, -2)
+scale = Vector2(3.75, 1.2)
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="ImpactBox" to="." method="_on_impact_box_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

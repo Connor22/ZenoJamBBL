@@ -22,16 +22,21 @@ func _on_player_bash(object, direction):
 	if object == self:
 		linear_velocity.reflect(direction)
 
-func _on_body_entered(body):
-	match body.name:
+func _on_impact_box_area_entered(area):
+	match area.owner.name:
 		"Vip":
-			var vip = body as VIP
+			var vip = area.owner as VIP
 			vip.incrementMotivation()
-			body.apply_central_impulse((body.global_position - global_position).normalized() * PushBack)
+			vip.bash_vip(PushBack,(area.global_position - global_position).normalized())
+			queue_free()
 		"Player":
-			var player = body as Player
-			body.velocity += ((global_position - body.global_position).normalized() * PushBack)
+			var player = area.owner as Player
+			player.velocity += ((global_position - area.global_position).normalized() * PushBack)
 			$CollisionShape2D.queue_free()
-		_:
 			queue_free()
 	pass # Replace with function body.
+	print(area.owner.name)
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	queue_free()
