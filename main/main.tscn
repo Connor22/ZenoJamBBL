@@ -1,16 +1,23 @@
-[gd_scene load_steps=9 format=3 uid="uid://4u7tuoc2q60t"]
+[gd_scene load_steps=15 format=3 uid="uid://4u7tuoc2q60t"]
 
 [ext_resource type="Script" path="res://main/main.gd" id="1_5q6hk"]
+[ext_resource type="PackedScene" uid="uid://bslpw0ikc0y6m" path="res://level/level_scenes/level_01.tscn" id="2_mkwgv"]
 [ext_resource type="Script" path="res://game_state/game_state_machine.gd" id="2_y47cf"]
+[ext_resource type="PackedScene" uid="uid://cttd64xbpiraj" path="res://level/level_scenes/level_02.tscn" id="3_v1g51"]
 [ext_resource type="Script" path="res://game_state/main_menu_state.gd" id="3_wqg48"]
 [ext_resource type="Script" path="res://game_state/gameplay_state.gd" id="4_640tu"]
 [ext_resource type="PackedScene" uid="uid://b7dxgoy5qreyo" path="res://game_state/state_scenes/main_menu/main_menu.tscn" id="4_kk008"]
+[ext_resource type="PackedScene" uid="uid://dgpbmmiwjkrhl" path="res://level/level_scenes/level_03.tscn" id="4_yc3g3"]
+[ext_resource type="PackedScene" uid="uid://c4xqebn8xq7tt" path="res://level/level_scenes/level_04.tscn" id="5_2ke8f"]
+[ext_resource type="PackedScene" uid="uid://bvhgpq34yjlqq" path="res://level/level_scenes/level_05.tscn" id="6_5pm1o"]
 [ext_resource type="PackedScene" uid="uid://cj6el6eihauos" path="res://game_state/state_scenes/gameplay/gameplay.tscn" id="6_8aj7y"]
+[ext_resource type="PackedScene" uid="uid://i4tdpbc4naih" path="res://level/level_scenes/level_06.tscn" id="7_l33t3"]
 [ext_resource type="Script" path="res://game_state/pause_menu_state.gd" id="7_p7pvm"]
 [ext_resource type="PackedScene" uid="uid://c16iboen3s6lh" path="res://game_state/state_scenes/pause_menu/pause_menu.tscn" id="8_ggu2m"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_5q6hk")
+packed_level_array = Array[PackedScene]([ExtResource("2_mkwgv"), ExtResource("3_v1g51"), ExtResource("4_yc3g3"), ExtResource("5_2ke8f"), ExtResource("6_5pm1o"), ExtResource("7_l33t3")])
 
 [node name="SoundManager(Example)" type="Node" parent="."]
 

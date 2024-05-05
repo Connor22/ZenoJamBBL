@@ -4,17 +4,17 @@ extends Node
 ## "I provide indirect communication between my children." ($/root/Main)
 
 ## All levels as packed scenes for us to grab from anywhere
-var packed_level_array: Array[PackedScene]
+@export var packed_level_array: Array[PackedScene]
 
-func _init():
-	var path = "res://level/level_scenes/"
-	var dir = DirAccess.open(path)
-	dir.list_dir_begin()
-	var level = dir.get_next()
-	while level != "":
-		if (level.ends_with(".tscn")):
-			packed_level_array.append(load(path.path_join(level)))
-		level = dir.get_next()
+#func _init():
+	#var path = "res://level/level_scenes/"
+	#var dir = DirAccess.open(path)
+	#dir.list_dir_begin()
+	#var level = dir.get_next()
+	#while level != "":
+		#if (level.ends_with(".tscn")):
+			#packed_level_array.append(load(path.path_join(level)))
+		#level = dir.get_next()
 
 # Request functions
 func request_quit():
