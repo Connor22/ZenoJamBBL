@@ -49,7 +49,7 @@ script = ExtResource("4_1bp6l")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path/Path2D"]
 position = Vector2(110.406, 1022.04)
-rotation = 0.0190285
+rotation = 0.0190334
 script = ExtResource("5_cj52l")
 
 [node name="Sprite2D" type="Sprite2D" parent="Path/Path2D/PathFollow2D"]

@@ -49,7 +49,7 @@ script = ExtResource("4_tmqdx")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path/Path2D"]
 position = Vector2(1386.88, 57.1792)
-rotation = 1.10864
+rotation = 1.10863
 script = ExtResource("5_plos0")
 
 [node name="Sprite2D" type="Sprite2D" parent="Path/Path2D/PathFollow2D"]
@@ -118,6 +118,8 @@ metadata/_edit_lock_ = true
 
 [node name="ShootGoblin" parent="." instance=ExtResource("8_77a13")]
 position = Vector2(109.459, 559.459)
+rotation = -0.698132
+scale = Vector2(-2, 2)
 
 [node name="BigWall2" type="StaticBody2D" parent="."]
 position = Vector2(-501.351, 117.568)
@@ -128,3 +130,5 @@ metadata/_edit_lock_ = true
 position = Vector2(455.198, 113.158)
 polygon = PackedVector2Array(20.2547, 15.7561, 244.123, 105.28, -58.6321, 268.57, -58.6321, 57.295)
 metadata/_edit_lock_ = true
+
+[editable path="ShootGoblin"]

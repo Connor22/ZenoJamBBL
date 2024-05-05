@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bvhgpq34yjlqq"]
+[gd_scene load_steps=17 format=3 uid="uid://bvhgpq34yjlqq"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_s0dso"]
 [ext_resource type="PackedScene" uid="uid://mwx7hdtetol8" path="res://entities/player/Player.tscn" id="2_wnlc4"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ddsatg2ofgwwi" path="res://assets/Godot Logos/svg/icon_color.svg" id="6_2tonj"]
 [ext_resource type="PackedScene" uid="uid://b6eyc4qoyhlsk" path="res://level/props/exit/level_exit.tscn" id="7_nygal"]
 [ext_resource type="PackedScene" uid="uid://dxi68ltrjchd0" path="res://entities/enemies/goblin/sword_goblin.tscn" id="8_6dpfg"]
+[ext_resource type="Script" path="res://entities/enemies/goblin/enemypath.gd" id="9_6r30t"]
 [ext_resource type="PackedScene" uid="uid://ceh7yuche4ht5" path="res://entities/enemies/goblin/shoot_goblin.tscn" id="9_xhqmx"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nnfde"]
@@ -24,6 +25,12 @@ point_count = 3
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iw58s"]
 radius = 146.014
+
+[sub_resource type="Curve2D" id="Curve2D_mxviq"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 969.733, 1040.78, 0, 0, 0, 0, 1506.46, 739.454)
+}
+point_count = 2
 
 [node name="Level05" type="Node2D" node_paths=PackedStringArray("level_exit")]
 scale = Vector2(0.74, 0.74)
@@ -116,8 +123,22 @@ metadata/_edit_lock_ = true
 [node name="SwordGoblin" parent="." instance=ExtResource("8_6dpfg")]
 position = Vector2(589.189, 204.054)
 
-[node name="ShootGoblin2" parent="." instance=ExtResource("9_xhqmx")]
-position = Vector2(566.216, 927.027)
+[node name="EnemyPath1" type="Node2D" parent="."]
 
-[node name="ShootGoblin" parent="." instance=ExtResource("9_xhqmx")]
-position = Vector2(816.216, 706.757)
+[node name="Path2D" type="Path2D" parent="EnemyPath1"]
+position = Vector2(123.378, 32.9412)
+scale = Vector2(0.485924, 0.865546)
+curve = SubResource("Curve2D_mxviq")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="EnemyPath1/Path2D"]
+position = Vector2(969.733, 1040.78)
+rotation = -0.511559
+rotates = false
+loop = false
+script = ExtResource("9_6r30t")
+FollowPath = false
+
+[node name="ShootGoblin" parent="EnemyPath1/Path2D/PathFollow2D" instance=ExtResource("9_xhqmx")]
+rotation = 1.22173
+MoveSpeed = 500
+ShootTimer = 1.0
