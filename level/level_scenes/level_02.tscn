@@ -29,7 +29,7 @@ radius = 146.014
 size = Vector2(442.444, 352.582)
 
 [node name="Level02" type="Node2D" node_paths=PackedStringArray("level_exit")]
-scale = Vector2(0.736095, 0.778389)
+scale = Vector2(0.74, 0.74)
 script = ExtResource("1_vbhst")
 level_exit = NodePath("LevelExit")
 
