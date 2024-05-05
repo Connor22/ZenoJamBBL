@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c4xqebn8xq7tt"]
+[gd_scene load_steps=14 format=3 uid="uid://c4xqebn8xq7tt"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_67gus"]
 [ext_resource type="PackedScene" uid="uid://mwx7hdtetol8" path="res://entities/player/Player.tscn" id="2_1pin6"]
@@ -7,14 +7,15 @@
 [ext_resource type="Script" path="res://entities/vip/VIPTarget.gd" id="5_plos0"]
 [ext_resource type="Texture2D" uid="uid://ddsatg2ofgwwi" path="res://assets/Godot Logos/svg/icon_color.svg" id="6_lnxp4"]
 [ext_resource type="PackedScene" uid="uid://b6eyc4qoyhlsk" path="res://level/props/exit/level_exit.tscn" id="7_haskk"]
+[ext_resource type="PackedScene" uid="uid://ceh7yuche4ht5" path="res://entities/enemies/goblin/shoot_goblin.tscn" id="8_77a13"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nnfde"]
 
 [sub_resource type="Curve2D" id="Curve2D_kh0f4"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 67.134, 373.243, 0, 0, 0, 0, 1657.92, 1026.01)
+"points": PackedVector2Array(0, 0, 0, 0, 1386.88, 57.1792, 0, 0, 0, 0, 1570.43, 425.639, 0, 0, 0, 0, -167.693, 1126.65)
 }
-point_count = 2
+point_count = 3
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5yd20"]
 
@@ -23,16 +24,16 @@ point_count = 2
 [sub_resource type="CircleShape2D" id="CircleShape2D_iw58s"]
 radius = 146.014
 
-[node name="Level02" type="Node2D" node_paths=PackedStringArray("level_exit")]
+[node name="Level04" type="Node2D" node_paths=PackedStringArray("level_exit")]
 scale = Vector2(0.74, 0.74)
 script = ExtResource("1_67gus")
 level_exit = NodePath("LevelExit")
 
 [node name="Player" parent="." instance=ExtResource("2_1pin6")]
-position = Vector2(169, 209)
+position = Vector2(686.487, 83.7838)
 
 [node name="Vip" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_2tfv4")]
-position = Vector2(282, 305)
+position = Vector2(800, 79.7297)
 physics_material_override = SubResource("PhysicsMaterial_nnfde")
 gravity_scale = 0.0
 lock_rotation = true
@@ -47,8 +48,8 @@ curve = SubResource("Curve2D_kh0f4")
 script = ExtResource("4_tmqdx")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path/Path2D"]
-position = Vector2(67.134, 373.243)
-rotation = 0.38939
+position = Vector2(1386.88, 57.1792)
+rotation = 1.10864
 script = ExtResource("5_plos0")
 
 [node name="Sprite2D" type="Sprite2D" parent="Path/Path2D/PathFollow2D"]
@@ -78,12 +79,11 @@ rotation = 4.71239
 shape = SubResource("WorldBoundaryShape2D_maui3")
 
 [node name="LevelExit" parent="." node_paths=PackedStringArray("collision_shape") instance=ExtResource("7_haskk")]
-position = Vector2(984, 968)
+position = Vector2(51.3513, 1009.46)
 is_locked = true
 collision_shape = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelExit"]
-position = Vector2(76, 71)
 shape = SubResource("CircleShape2D_iw58s")
 
 [node name="BGArt" type="ColorRect" parent="."]
@@ -93,4 +93,38 @@ offset_bottom = 1080.0
 size_flags_horizontal = 4
 color = Color(0.543629, 0.397909, 0.25549, 1)
 metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="Cover" type="StaticBody2D" parent="."]
+position = Vector2(801.352, 206.757)
+scale = Vector2(2.58215, 12.6755)
+collision_mask = 26
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Cover"]
+rotation = 2.51426
+polygon = PackedVector2Array(17.9779, 9.08418, 88.5496, 83.8229, 134.26, 104.586, 37.3664, 18.0059)
+
+[node name="BigWall3" type="StaticBody2D" parent="."]
+position = Vector2(597.297, 406.757)
+scale = Vector2(1.60691, 3.56027)
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="BigWall3"]
+position = Vector2(-58.8675, 162.454)
+rotation = 2.51426
+scale = Vector2(1.72327, 2.20584)
+polygon = PackedVector2Array(-56.3941, -46.0109, -60.0504, 12.7451, 101.217, 52.4032, 104.269, 44.5678)
+metadata/_edit_lock_ = true
+
+[node name="ShootGoblin" parent="." instance=ExtResource("8_77a13")]
+position = Vector2(109.459, 559.459)
+
+[node name="BigWall2" type="StaticBody2D" parent="."]
+position = Vector2(-501.351, 117.568)
+scale = Vector2(1.26764, 1.88687)
+metadata/_edit_lock_ = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BigWall2"]
+position = Vector2(455.198, 113.158)
+polygon = PackedVector2Array(20.2547, 15.7561, 244.123, 105.28, -58.6321, 268.57, -58.6321, 57.295)
 metadata/_edit_lock_ = true
