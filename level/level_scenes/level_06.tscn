@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://i4tdpbc4naih"]
+[gd_scene load_steps=17 format=3 uid="uid://i4tdpbc4naih"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_w8f4y"]
 [ext_resource type="PackedScene" uid="uid://mwx7hdtetol8" path="res://entities/player/Player.tscn" id="2_nocxj"]
@@ -9,14 +9,15 @@
 [ext_resource type="PackedScene" uid="uid://b6eyc4qoyhlsk" path="res://level/props/exit/level_exit.tscn" id="7_76et7"]
 [ext_resource type="PackedScene" uid="uid://bry70k6wm4ui5" path="res://entities/objects/key/key.tscn" id="8_1pf4e"]
 [ext_resource type="Texture2D" uid="uid://dbn6iicdigfcm" path="res://level/LEVEL6.png" id="9_r4j84"]
+[ext_resource type="Script" path="res://level/level_scenes/OCHIEBOOBOO.gd" id="10_fxglx"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nnfde"]
 
 [sub_resource type="Curve2D" id="Curve2D_kh0f4"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 110.406, 1022.04, 0, 0, 0, 0, 602.642, 1031.41, 0, 0, 0, 0, 730.568, 527.122, 0, 0, 0, 0, 460.811, 160.223, 0, 0, 0, 0, 1206.12, 49.3728, 0, 0, 0, 0, 1690.01, 102.456, 0, 0, 0, 0, 1854.09, 1047.02)
+"points": PackedVector2Array(0, 0, 0, 0, 49.2244, 1118.84, 0, 0, 0, 0, 622.109, 1118.84, 0, 0, 0, 0, 969.733, 1070.44, 0, 0, 0, 0, 1005.89, 675.442, 0, 0, 0, 0, 955.828, 319.473, 0, 0, 0, 0, 235.551, 217.99, 0, 0, 0, 0, -3.61452, 161.784, 0, 0, 0, 0, 124.311, 88.4046, 0, 0, 0, 0, 1206.12, 49.3728, 0, 0, 0, 0, 1690.01, 102.456, 0, 0, 0, 0, 1854.09, 1047.02)
 }
-point_count = 7
+point_count = 11
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5yd20"]
 
@@ -25,17 +26,20 @@ point_count = 7
 [sub_resource type="CircleShape2D" id="CircleShape2D_iw58s"]
 radius = 146.014
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kyba2"]
+size = Vector2(157.703, 92.162)
+
 [node name="Level06" type="Node2D" node_paths=PackedStringArray("level_exit")]
 scale = Vector2(0.74, 0.74)
 script = ExtResource("1_w8f4y")
 level_exit = NodePath("LevelExit")
 
 [node name="Player" parent="." instance=ExtResource("2_nocxj")]
-position = Vector2(64.8649, 1022.97)
+position = Vector2(50, 1028.38)
 collision_mask = 127
 
 [node name="Vip" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_5hvwv")]
-position = Vector2(168.919, 912.162)
+position = Vector2(87.8378, 904.054)
 physics_material_override = SubResource("PhysicsMaterial_nnfde")
 gravity_scale = 0.0
 lock_rotation = true
@@ -50,8 +54,7 @@ curve = SubResource("Curve2D_kh0f4")
 script = ExtResource("4_1bp6l")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path/Path2D"]
-position = Vector2(110.406, 1022.04)
-rotation = 0.0190334
+position = Vector2(49.2244, 1118.84)
 script = ExtResource("5_cj52l")
 
 [node name="Sprite2D" type="Sprite2D" parent="Path/Path2D/PathFollow2D"]
@@ -59,7 +62,6 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("6_i004a")
 
 [node name="WorldBoundaries" type="StaticBody2D" parent="."]
-metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundaries"]
 position = Vector2(0, -20)
@@ -99,30 +101,27 @@ position = Vector2(1031.08, 3880.89)
 scale = Vector2(6.6675, 160.668)
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="BigWall5"]
-polygon = PackedVector2Array(-55.128, -22.3127, -44.9941, -23.3052, -29.7933, -23.3893, -16.4166, -23.1622, -24.321, -21.7912, -49.8583, -22.052)
-metadata/_edit_lock_ = true
+polygon = PackedVector2Array(-50.0612, -22.3716, -44.9941, -23.3052, -29.7933, -23.3893, -16.4166, -23.1622, -24.7265, -21.8586, -48.8451, -22.1277)
 
 [node name="BigWall4" type="StaticBody2D" parent="."]
 position = Vector2(287.838, 283.784)
 scale = Vector2(2.58215, 12.6755)
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="BigWall4"]
-polygon = PackedVector2Array(83.7349, 25.7999, -31.4007, 25.6932, -25.1206, 3.41154, 5.23335, 2.45203, 45.5308, 3.51816, 87.9216, 3.30493)
-metadata/_edit_lock_ = true
+position = Vector2(-7.18703e-05, -0.639684)
+polygon = PackedVector2Array(80.0715, 23.1346, 3.14006, 23.5611, -4.18674, 7.35618, 75.3615, 6.82312)
 
 [node name="BigWall3" type="StaticBody2D" parent="."]
 position = Vector2(597.297, 406.757)
 scale = Vector2(1.60691, 3.56027)
-metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="BigWall3"]
 position = Vector2(-58.8675, 162.454)
 rotation = 2.51426
 scale = Vector2(1.72327, 2.20584)
-polygon = PackedVector2Array(46.4138, 66.2478, -22.8844, 24.6579, -16.5782, 15.2648, 130.94, 100.523, 77.041, 159.898, 44.0618, 136.329, 91.1957, 103.728)
-metadata/_edit_lock_ = true
+polygon = PackedVector2Array(46.4138, 66.2478, -22.8844, 24.6579, -19.4442, 16.4045, 45.4359, 49.1157, 124.885, 108.995, 77.041, 159.898, 44.0618, 136.329, 91.1957, 103.728)
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 position = Vector2(68.9189, 32.4324)
@@ -133,3 +132,26 @@ z_index = -2
 position = Vector2(540, 540)
 texture = ExtResource("9_r4j84")
 metadata/_edit_lock_ = true
+
+[node name="OCHIEBOOBOO2" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("10_fxglx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OCHIEBOOBOO2"]
+position = Vector2(428.378, 871.622)
+shape = SubResource("RectangleShape2D_kyba2")
+debug_color = Color(0.165349, 0.644139, 0, 0.42)
+
+[node name="OCHIEBOOBOO" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("10_fxglx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OCHIEBOOBOO"]
+position = Vector2(760.811, 370.27)
+shape = SubResource("RectangleShape2D_kyba2")
+debug_color = Color(0.165349, 0.644139, 0, 0.42)
+
+[connection signal="area_entered" from="OCHIEBOOBOO2" to="OCHIEBOOBOO2" method="_on_area_entered"]
+[connection signal="area_entered" from="OCHIEBOOBOO" to="OCHIEBOOBOO" method="_on_area_entered"]

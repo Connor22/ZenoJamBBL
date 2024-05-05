@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cttd64xbpiraj"]
+[gd_scene load_steps=17 format=3 uid="uid://cttd64xbpiraj"]
 
 [ext_resource type="PackedScene" uid="uid://55dyjvvtj12w" path="res://entities/vip/vip.tscn" id="1_qfho8"]
 [ext_resource type="Script" path="res://level/level.gd" id="1_vbhst"]
@@ -14,9 +14,9 @@
 
 [sub_resource type="Curve2D" id="Curve2D_kh0f4"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 750.035, 1118.84, 0, 0, 0, 0, 1325.7, 901.826, 0, 0, 0, 0, 1336.82, 603.624, 0, 0, 0, 0, 830.846, 380.506, 0, 0, 0, 0, 822.459, 50.9979)
+"points": PackedVector2Array(0, 0, 0, 0, 855.712, 1031.41, 0, 0, 0, 0, 852.931, 920.562, 0, 0, 0, 0, 558.146, 650.462, 0, 0, 0, 0, 652.7, 442.813, 0, 0, 0, 0, 797.312, 319.473, 0, 0, 0, 0, 822.459, 50.9979)
 }
-point_count = 5
+point_count = 6
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5yd20"]
 
@@ -26,7 +26,10 @@ point_count = 5
 radius = 146.014
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oyjlh"]
-size = Vector2(442.444, 352.582)
+size = Vector2(397.857, 345.21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ypg7o"]
+size = Vector2(465.817, 323.588)
 
 [node name="Level02" type="Node2D" node_paths=PackedStringArray("level_exit")]
 scale = Vector2(0.74, 0.74)
@@ -34,10 +37,10 @@ script = ExtResource("1_vbhst")
 level_exit = NodePath("LevelExit")
 
 [node name="Player" parent="." instance=ExtResource("2_fv72c")]
-position = Vector2(427.934, 513.882)
+position = Vector2(531.081, 1035.14)
 
 [node name="Vip" parent="." node_paths=PackedStringArray("target") instance=ExtResource("1_qfho8")]
-position = Vector2(493.143, 995.646)
+position = Vector2(543.243, 929.73)
 physics_material_override = SubResource("PhysicsMaterial_nnfde")
 gravity_scale = 0.0
 lock_rotation = true
@@ -52,8 +55,8 @@ curve = SubResource("Curve2D_kh0f4")
 script = ExtResource("3_3n8d0")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path/Path2D"]
-position = Vector2(750.035, 1118.84)
-rotation = -0.360505
+position = Vector2(855.712, 1031.41)
+rotation = -1.59588
 script = ExtResource("4_g72we")
 
 [node name="Sprite2D" type="Sprite2D" parent="Path/Path2D/PathFollow2D"]
@@ -90,19 +93,19 @@ collision_shape = NodePath("CollisionShape2D")
 shape = SubResource("CircleShape2D_iw58s")
 
 [node name="SwordGoblin" parent="." instance=ExtResource("8_ac6ki")]
-position = Vector2(529.823, 164.442)
+position = Vector2(508.108, 308.108)
 
 [node name="BigWall2" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BigWall2"]
-position = Vector2(224.156, 173.149)
+position = Vector2(202.423, 163.882)
 shape = SubResource("RectangleShape2D_oyjlh")
 
 [node name="BigWall" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BigWall"]
-position = Vector2(831.414, 174.72)
-shape = SubResource("RectangleShape2D_oyjlh")
+position = Vector2(849.125, 161.179)
+shape = SubResource("RectangleShape2D_ypg7o")
 
 [node name="Level2" type="Sprite2D" parent="."]
 z_index = -2

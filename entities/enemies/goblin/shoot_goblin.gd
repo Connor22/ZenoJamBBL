@@ -22,9 +22,11 @@ func _ready():
 func _process(delta):
 	var sprite = find_child("Sprite") as Sprite2D
 	if flash_timer > 0:
+		collision_layer = 0
 		sprite.self_modulate.a = wrapf(flash_timer, 0.4, 0.8)
 		flash_timer -= delta
 	elif shoot_timer <= 0:
+		collision_layer = 32
 		shoot_timer = ShootTimer
 		shoot()
 	else:

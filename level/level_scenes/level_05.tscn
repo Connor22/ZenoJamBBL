@@ -16,9 +16,9 @@
 
 [sub_resource type="Curve2D" id="Curve2D_kh0f4"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 77.0343, 716.035, 0, 0, 0, 0, 636.014, 302.299, 0, 0, 0, 0, 1409.13, 54.0567)
+"points": PackedVector2Array(0, 0, 0, 0, -0.833511, 894.02, 0, 0, 0, 0, 246.675, 559.908, 0, 0, 0, 0, 597.08, 292.931, 0, 0, 0, 0, 1709.48, -3.71034)
 }
-point_count = 3
+point_count = 4
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5yd20"]
 
@@ -39,10 +39,10 @@ script = ExtResource("1_s0dso")
 level_exit = NodePath("LevelExit")
 
 [node name="Player" parent="." instance=ExtResource("2_wnlc4")]
-position = Vector2(90.5405, 1017.57)
+position = Vector2(144.595, 993.243)
 
 [node name="Vip" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_vi1hw")]
-position = Vector2(137.838, 722.973)
+position = Vector2(86.4865, 918.919)
 physics_material_override = SubResource("PhysicsMaterial_nnfde")
 gravity_scale = 0.0
 lock_rotation = true
@@ -57,8 +57,8 @@ curve = SubResource("Curve2D_kh0f4")
 script = ExtResource("4_ixnmx")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path/Path2D"]
-position = Vector2(77.0343, 716.035)
-rotation = -0.637176
+position = Vector2(-0.833511, 894.02)
+rotation = -0.933213
 script = ExtResource("5_36kyx")
 
 [node name="Sprite2D" type="Sprite2D" parent="Path/Path2D/PathFollow2D"]
@@ -103,7 +103,7 @@ color = Color(0.543629, 0.397909, 0.25549, 1)
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 polygon = PackedVector2Array(5.40541, 810.811, 202.703, 431.081, 395.946, 174.324, 779.73, 2.7027, -2.7027, -9.45946)
@@ -111,14 +111,12 @@ polygon = PackedVector2Array(5.40541, 810.811, 202.703, 431.081, 395.946, 174.32
 [node name="BigWall3" type="StaticBody2D" parent="."]
 position = Vector2(597.297, 406.757)
 scale = Vector2(1.60691, 3.56027)
-metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="BigWall3"]
 position = Vector2(-58.8675, 162.454)
 rotation = 2.51426
 scale = Vector2(1.72327, 2.20584)
-polygon = PackedVector2Array(-163.214, -107.964, -222.12, -39.9472, -62.5843, 43.4037, 104.269, 44.5678, -3.59253, -16.9128, -87.753, -65.2211)
-metadata/_edit_lock_ = true
+polygon = PackedVector2Array(-163.214, -107.964, -257.898, -9.83954, -71.4498, 23.0794, 29.8457, 0.964981, -3.59253, -16.9128, -87.753, -65.2211)
 
 [node name="SwordGoblin" parent="." instance=ExtResource("8_6dpfg")]
 position = Vector2(589.189, 204.054)

@@ -14,9 +14,9 @@
 
 [sub_resource type="Curve2D" id="Curve2D_kh0f4"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1386.88, 57.1792, 0, 0, 0, 0, 1570.43, 425.639, 0, 0, 0, 0, -167.693, 1126.65)
+"points": PackedVector2Array(0, 0, 0, 0, 1386.88, 57.1792, 0, 0, 0, 0, 1409.13, 253.899, 0, 0, 0, 0, 1200.56, 620.798, 0, 0, 0, 0, 711.101, 922.123, 0, 0, 0, 0, 207.741, 1093.86, 0, 0, 0, 0, -167.693, 1126.65)
 }
-point_count = 3
+point_count = 6
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5yd20"]
 
@@ -50,7 +50,7 @@ script = ExtResource("4_tmqdx")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path/Path2D"]
 position = Vector2(1386.88, 57.1792)
-rotation = 1.10863
+rotation = 1.45817
 script = ExtResource("5_plos0")
 
 [node name="Sprite2D" type="Sprite2D" parent="Path/Path2D/PathFollow2D"]
@@ -108,17 +108,15 @@ polygon = PackedVector2Array(18.2571, 6.91624, 80.3118, 78.2452, 152.701, 130.86
 [node name="BigWall3" type="StaticBody2D" parent="."]
 position = Vector2(597.297, 406.757)
 scale = Vector2(1.60691, 3.56027)
-metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="BigWall3"]
 position = Vector2(-58.8675, 162.454)
 rotation = 2.51426
 scale = Vector2(1.72327, 2.20584)
-polygon = PackedVector2Array(-36.7729, -35.0689, -42.1308, -22.8008, 52.1655, 30.8232, 65.6837, 22.7522)
-metadata/_edit_lock_ = true
+polygon = PackedVector2Array(-28.4977, -32.2945, -34.7968, -22.2598, 49.7516, 25.6302, 57.8896, 16.212)
 
 [node name="ShootGoblin" parent="." instance=ExtResource("8_77a13")]
-position = Vector2(116.216, 705.405)
+position = Vector2(360.811, 867.567)
 rotation = -0.698132
 scale = Vector2(-2, 2)
 
@@ -129,7 +127,7 @@ metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BigWall2"]
 position = Vector2(455.198, 113.158)
-polygon = PackedVector2Array(136.452, 115.305, 139.65, 287.19, -53.3022, 289.339, -58.6324, 112.441)
+polygon = PackedVector2Array(118.33, 116.022, 122.594, 267.853, -59.6985, 264.988, -58.6324, 112.441)
 metadata/_edit_lock_ = true
 
 [node name="Level4" type="Sprite2D" parent="."]

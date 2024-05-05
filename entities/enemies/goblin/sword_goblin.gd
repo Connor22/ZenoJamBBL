@@ -35,14 +35,13 @@ func _on_player_bash(object, direction):
 	if object == self:
 		flash_timer = DisableDuration
 
-func _on_aggro_box_body_entered(body):
-	match body.name:
+
+func _on_aggro_box_area_entered(area):
+	match area.owner.name:
 		"Vip" when flash_timer == 0.0:
-			var vip = body as VIP
+			var vip = area.owner as VIP
 			vip.incrementMotivation()
-			body.apply_central_impulse((body.global_position - global_position).normalized() * PushBack)
-		"Player" when flash_timer == 0.0:
-			var player = body as Player
-			body.velocity += ((global_position - body.global_position).normalized() * PushBack)
-		_ when body.name.begins_with("Arrow"):
+			vip.incrementMotivation()
+			vip.apply_central_impulse((area.global_position - global_position).normalized() * PushBack)
+		_ when area.owner.name.begins_with("Arrow"):
 			flash_timer = DisableDuration
