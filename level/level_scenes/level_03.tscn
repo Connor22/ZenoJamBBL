@@ -127,7 +127,7 @@ loop = false
 script = ExtResource("8_k7pll")
 
 [node name="SwordGoblin" parent="EnemyPath1/Path2D/PathFollow2D" instance=ExtResource("8_kjef4")]
-scale = Vector2(-2, 2)
+scale = Vector2(-1, 1)
 MoveSpeed = 500
 
 [node name="EnemyPath2" type="Node2D" parent="."]
@@ -146,7 +146,7 @@ loop = false
 script = ExtResource("8_k7pll")
 
 [node name="SwordGoblin" parent="EnemyPath2/Path2D/PathFollow2D" instance=ExtResource("8_kjef4")]
-scale = Vector2(-2, 2)
+scale = Vector2(-1, 1)
 MoveSpeed = 500
 
 [node name="Level3" type="Sprite2D" parent="."]

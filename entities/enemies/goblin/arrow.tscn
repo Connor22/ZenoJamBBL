@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgwkurpqknkbl"]
+
+[ext_resource type="Texture2D" uid="uid://dgtt3jgys3wn5" path="res://entities/enemies/goblin/goblin_arrow.png" id="1_8c6vi"]
+[ext_resource type="Script" path="res://entities/enemies/goblin/arrow.gd" id="1_ftl3f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y2777"]
+size = Vector2(75, 23)
+
+[node name="Arrow" type="RigidBody2D"]
+collision_layer = 104
+collision_mask = 22
+script = ExtResource("1_ftl3f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.24, 0.24)
+texture = ExtResource("1_8c6vi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -1.5)
+shape = SubResource("RectangleShape2D_y2777")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

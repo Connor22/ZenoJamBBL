@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c4xqebn8xq7tt"]
+[gd_scene load_steps=14 format=3 uid="uid://c4xqebn8xq7tt"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_67gus"]
 [ext_resource type="PackedScene" uid="uid://mwx7hdtetol8" path="res://entities/player/Player.tscn" id="2_1pin6"]
@@ -50,7 +50,7 @@ script = ExtResource("4_tmqdx")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path/Path2D"]
 position = Vector2(1386.88, 57.1792)
-rotation = 1.10863
+rotation = 1.10864
 script = ExtResource("5_plos0")
 
 [node name="Sprite2D" type="Sprite2D" parent="Path/Path2D/PathFollow2D"]
@@ -87,6 +87,15 @@ collision_shape = NodePath("CollisionShape2D")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelExit"]
 shape = SubResource("CircleShape2D_iw58s")
 
+[node name="BGArt" type="ColorRect" parent="."]
+z_index = -2
+offset_right = 1080.0
+offset_bottom = 1080.0
+size_flags_horizontal = 4
+color = Color(0.543629, 0.397909, 0.25549, 1)
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
 [node name="Cover" type="StaticBody2D" parent="."]
 position = Vector2(801.352, 206.757)
 scale = Vector2(2.58215, 12.6755)
@@ -110,6 +119,8 @@ metadata/_edit_lock_ = true
 
 [node name="ShootGoblin" parent="." instance=ExtResource("8_77a13")]
 position = Vector2(109.459, 559.459)
+rotation = -0.698132
+scale = Vector2(-2, 2)
 
 [node name="BigWall2" type="StaticBody2D" parent="."]
 position = Vector2(-501.351, 117.568)
@@ -126,3 +137,5 @@ z_index = -2
 position = Vector2(540, 540)
 texture = ExtResource("9_52bbp")
 metadata/_edit_lock_ = true
+
+[editable path="ShootGoblin"]
