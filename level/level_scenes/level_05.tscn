@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bvhgpq34yjlqq"]
+[gd_scene load_steps=16 format=3 uid="uid://bvhgpq34yjlqq"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_s0dso"]
 [ext_resource type="PackedScene" uid="uid://mwx7hdtetol8" path="res://entities/player/Player.tscn" id="2_wnlc4"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b6eyc4qoyhlsk" path="res://level/props/exit/level_exit.tscn" id="7_nygal"]
 [ext_resource type="PackedScene" uid="uid://dxi68ltrjchd0" path="res://entities/enemies/goblin/sword_goblin.tscn" id="8_6dpfg"]
 [ext_resource type="PackedScene" uid="uid://ceh7yuche4ht5" path="res://entities/enemies/goblin/shoot_goblin.tscn" id="9_xhqmx"]
+[ext_resource type="Texture2D" uid="uid://cncmmu0y214s1" path="res://level/LEVEL5.png" id="10_iuc5b"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nnfde"]
 
@@ -87,15 +88,6 @@ collision_shape = NodePath("CollisionShape2D")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelExit"]
 shape = SubResource("CircleShape2D_iw58s")
 
-[node name="BGArt" type="ColorRect" parent="."]
-z_index = -2
-offset_right = 1080.0
-offset_bottom = 1080.0
-size_flags_horizontal = 4
-color = Color(0.543629, 0.397909, 0.25549, 1)
-metadata/_edit_use_anchors_ = true
-metadata/_edit_lock_ = true
-
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
@@ -121,3 +113,9 @@ position = Vector2(566.216, 927.027)
 
 [node name="ShootGoblin" parent="." instance=ExtResource("9_xhqmx")]
 position = Vector2(816.216, 706.757)
+
+[node name="Level5" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(540, 540)
+texture = ExtResource("10_iuc5b")
+metadata/_edit_lock_ = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c4xqebn8xq7tt"]
+[gd_scene load_steps=15 format=3 uid="uid://c4xqebn8xq7tt"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_67gus"]
 [ext_resource type="PackedScene" uid="uid://mwx7hdtetol8" path="res://entities/player/Player.tscn" id="2_1pin6"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ddsatg2ofgwwi" path="res://assets/Godot Logos/svg/icon_color.svg" id="6_lnxp4"]
 [ext_resource type="PackedScene" uid="uid://b6eyc4qoyhlsk" path="res://level/props/exit/level_exit.tscn" id="7_haskk"]
 [ext_resource type="PackedScene" uid="uid://ceh7yuche4ht5" path="res://entities/enemies/goblin/shoot_goblin.tscn" id="8_77a13"]
+[ext_resource type="Texture2D" uid="uid://d1kc61pimqs7y" path="res://level/LEVEL4.png" id="9_52bbp"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nnfde"]
 
@@ -49,7 +50,7 @@ script = ExtResource("4_tmqdx")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path/Path2D"]
 position = Vector2(1386.88, 57.1792)
-rotation = 1.10864
+rotation = 1.10863
 script = ExtResource("5_plos0")
 
 [node name="Sprite2D" type="Sprite2D" parent="Path/Path2D/PathFollow2D"]
@@ -86,15 +87,6 @@ collision_shape = NodePath("CollisionShape2D")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelExit"]
 shape = SubResource("CircleShape2D_iw58s")
 
-[node name="BGArt" type="ColorRect" parent="."]
-z_index = -2
-offset_right = 1080.0
-offset_bottom = 1080.0
-size_flags_horizontal = 4
-color = Color(0.543629, 0.397909, 0.25549, 1)
-metadata/_edit_use_anchors_ = true
-metadata/_edit_lock_ = true
-
 [node name="Cover" type="StaticBody2D" parent="."]
 position = Vector2(801.352, 206.757)
 scale = Vector2(2.58215, 12.6755)
@@ -127,4 +119,10 @@ metadata/_edit_lock_ = true
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BigWall2"]
 position = Vector2(455.198, 113.158)
 polygon = PackedVector2Array(20.2547, 15.7561, 244.123, 105.28, -58.6321, 268.57, -58.6321, 57.295)
+metadata/_edit_lock_ = true
+
+[node name="Level4" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(540, 540)
+texture = ExtResource("9_52bbp")
 metadata/_edit_lock_ = true
