@@ -3,10 +3,10 @@ class_name ShootGoblin
 
 @export_range(0, 500, 10) var MoveSpeed = 50
 @export_range(0, 5000, 100) var PushBack = 500
-@export_range(0, 5000, 100) var ArrowSpeed: float = 0
+@export_range(0, 5000, 100) var ArrowSpeed: float = 200
 
 @export var ShootTimer: float = 5.0
-@export var DisableDuration: float = 2.0
+@export var DisableDuration: float = 60.0
 @export var ArrowObj: PackedScene
 
 var flash_timer = 0.0
@@ -37,6 +37,9 @@ func shoot():
 	arrow.global_position = $ArrowSpawn.global_position
 	arrow.apply_central_impulse(($ArrowSpawn.global_position - global_position).normalized() * ArrowSpeed)
 
+func disable():
+	flash_timer = DisableDuration
+	
 func getMoveSpeed():
 	if flash_timer == 0:
 		return MoveSpeed

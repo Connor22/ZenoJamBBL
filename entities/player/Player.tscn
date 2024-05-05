@@ -541,6 +541,6 @@ libraries = {
 "": SubResource("AnimationLibrary_f08og")
 }
 autoplay = "RESET"
-blend_times = [&"aim", &"walk_down", 0.25, &"aim", &"walk_left", 0.25, &"aim", &"walk_right", 0.25, &"aim", &"walk_up", 0.25]
+blend_times = [&"aim", &"walk_up", 0.25, &"aim", &"walk_down", 0.25, &"aim", &"walk_right", 0.25, &"aim", &"walk_left", 0.25]
 
 [connection signal="timeout" from="PlayerStateMachine/ShieldPlayerState/ImpactShapeLingerTimer" to="PlayerStateMachine/ShieldPlayerState" method="_on_impact_shape_linger_timer_timeout"]
