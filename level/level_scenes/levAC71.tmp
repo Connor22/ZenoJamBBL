@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dgpbmmiwjkrhl"]
+[gd_scene load_steps=17 format=3 uid="uid://dgpbmmiwjkrhl"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_u63lr"]
 [ext_resource type="PackedScene" uid="uid://mwx7hdtetol8" path="res://entities/player/Player.tscn" id="2_kwrr7"]
@@ -34,13 +34,7 @@ _data = {
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_p6efp"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -206.627, 392.852, 0, 0, 0, 0, 335.667, -170.766)
-}
-point_count = 2
-
-[node name="Level03" type="Node2D" node_paths=PackedStringArray("level_exit")]
+[node name="Level02" type="Node2D" node_paths=PackedStringArray("level_exit")]
 scale = Vector2(0.74, 0.74)
 script = ExtResource("1_u63lr")
 level_exit = NodePath("LevelExit")
@@ -66,8 +60,6 @@ script = ExtResource("4_78dee")
 [node name="PathFollow2D" type="PathFollow2D" parent="Path/Path2D"]
 position = Vector2(-42.5484, 895.581)
 rotation = -1.25206
-rotates = false
-loop = false
 script = ExtResource("5_nyngd")
 
 [node name="Sprite2D" type="Sprite2D" parent="Path/Path2D/PathFollow2D"]
@@ -105,48 +97,6 @@ collision_shape = NodePath("CollisionShape2D")
 position = Vector2(40.3243, -31.5135)
 shape = SubResource("CircleShape2D_iw58s")
 
-[node name="BigWall2" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BigWall2"]
-position = Vector2(545.946, 645.946)
-shape = SubResource("RectangleShape2D_yumcy")
-
-[node name="EnemyPath1" type="Node2D" parent="."]
-
-[node name="Path2D" type="Path2D" parent="EnemyPath1"]
-position = Vector2(123.378, 32.9412)
-scale = Vector2(0.485924, 0.865546)
-curve = SubResource("Curve2D_hx8yi")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="EnemyPath1/Path2D"]
-position = Vector2(-123.197, 104.017)
-rotation = 0.0272839
-loop = false
-script = ExtResource("8_k7pll")
-
-[node name="SwordGoblin" parent="EnemyPath1/Path2D/PathFollow2D" instance=ExtResource("8_kjef4")]
-scale = Vector2(-1, 1)
-MoveSpeed = 500
-
-[node name="EnemyPath2" type="Node2D" parent="."]
-position = Vector2(791.892, 377.027)
-
-[node name="Path2D" type="Path2D" parent="EnemyPath2"]
-position = Vector2(123.378, 32.9412)
-scale = Vector2(0.485924, 0.865546)
-curve = SubResource("Curve2D_p6efp")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="EnemyPath2/Path2D"]
-position = Vector2(-206.627, 392.852)
-rotation = -0.804678
-rotates = false
-loop = false
-script = ExtResource("8_k7pll")
-
-[node name="SwordGoblin" parent="EnemyPath2/Path2D/PathFollow2D" instance=ExtResource("8_kjef4")]
-scale = Vector2(-1, 1)
-MoveSpeed = 500
-
 [node name="BGArt" type="ColorRect" parent="."]
 z_index = -2
 offset_right = 1080.0
@@ -155,3 +105,26 @@ size_flags_horizontal = 4
 color = Color(0.543629, 0.397909, 0.25549, 1)
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
+
+[node name="BigWall2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BigWall2"]
+position = Vector2(545.946, 645.946)
+shape = SubResource("RectangleShape2D_yumcy")
+
+[node name="EnemyPath" type="Node2D" parent="."]
+
+[node name="Path2D" type="Path2D" parent="EnemyPath"]
+position = Vector2(123.378, 32.9412)
+scale = Vector2(0.485924, 0.865546)
+curve = SubResource("Curve2D_hx8yi")
+script = ExtResource("4_78dee")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="EnemyPath/Path2D"]
+position = Vector2(-123.197, 104.017)
+rotation = 0.0272839
+loop = false
+script = ExtResource("8_k7pll")
+
+[node name="SwordGoblin" parent="EnemyPath/Path2D/PathFollow2D" instance=ExtResource("8_kjef4")]
+scale = Vector2(-1, 1)
