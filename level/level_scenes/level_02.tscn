@@ -26,7 +26,7 @@ point_count = 5
 radius = 146.014
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oyjlh"]
-size = Vector2(442.444, 250.378)
+size = Vector2(442.444, 352.582)
 
 [node name="Level02" type="Node2D" node_paths=PackedStringArray("level_exit")]
 scale = Vector2(0.736095, 0.778389)
@@ -37,7 +37,7 @@ level_exit = NodePath("LevelExit")
 position = Vector2(427.934, 513.882)
 
 [node name="Vip" parent="." node_paths=PackedStringArray("target") instance=ExtResource("1_qfho8")]
-position = Vector2(282, 305)
+position = Vector2(493.143, 995.646)
 physics_material_override = SubResource("PhysicsMaterial_nnfde")
 gravity_scale = 0.0
 lock_rotation = true
@@ -83,12 +83,10 @@ rotation = 4.71239
 shape = SubResource("WorldBoundaryShape2D_maui3")
 
 [node name="LevelExit" parent="." node_paths=PackedStringArray("collision_shape") instance=ExtResource("7_h7kc6")]
-position = Vector2(984, 968)
-is_locked = true
+position = Vector2(521.672, 42.3953)
 collision_shape = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelExit"]
-position = Vector2(76, 71)
 shape = SubResource("CircleShape2D_iw58s")
 
 [node name="SwordGoblin" parent="." instance=ExtResource("8_ac6ki")]
@@ -97,13 +95,14 @@ position = Vector2(529.823, 164.442)
 [node name="BigWall2" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BigWall2"]
-position = Vector2(224.156, 122.047)
+position = Vector2(224.156, 173.149)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_oyjlh")
 
 [node name="BigWall" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BigWall"]
-position = Vector2(858.585, 127.186)
+position = Vector2(831.414, 174.72)
 shape = SubResource("RectangleShape2D_oyjlh")
 
 [node name="Level2" type="Sprite2D" parent="."]

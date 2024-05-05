@@ -89,7 +89,6 @@ shape = SubResource("WorldBoundaryShape2D_maui3")
 
 [node name="LevelExit" parent="." node_paths=PackedStringArray("collision_shape") instance=ExtResource("7_nygal")]
 position = Vector2(974.324, 95.9459)
-is_locked = true
 collision_shape = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelExit"]
@@ -107,7 +106,7 @@ metadata/_edit_lock_ = true
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-polygon = PackedVector2Array(0, 671.622, 187.838, 391.892, 395.946, 174.324, 667.568, -2.7027, -2.7027, -9.45946)
+polygon = PackedVector2Array(5.40541, 810.811, 202.703, 431.081, 395.946, 174.324, 779.73, 2.7027, -2.7027, -9.45946)
 
 [node name="BigWall3" type="StaticBody2D" parent="."]
 position = Vector2(597.297, 406.757)

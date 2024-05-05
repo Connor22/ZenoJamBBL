@@ -15,10 +15,13 @@ func _ready():
 	player.connect("bash", _on_player_bash)
 	
 func _process(delta):
-	var sprite = find_child("Sprite") as Sprite2D
+	var sprite = $Sprite as Sprite2D
 	if flash_timer > 0:
 		sprite.self_modulate.a = wrapf(flash_timer, 0.4, 0.8)
 		flash_timer -= delta
+	elif flash_timer < 0:
+		sprite.self_modulate.a = 1.0
+		flash_timer = 0.0
 	
 func getMoveSpeed():
 	if flash_timer == 0:
